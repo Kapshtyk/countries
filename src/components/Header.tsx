@@ -1,0 +1,97 @@
+import React, { useRef, useState } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { useSelector } from 'react-redux'
+
+import AuthButtons from '@/components/AuthButtons'
+import CustomNavLink from '@/components/CustomNavLink'
+import Hamburger from '@/components/Hamburger'
+
+import { auth } from '@/app/auth/firebase'
+
+import { getFavourites } from '@/features/favourites/favouritesSlice'
+
+import { useClickOutside } from '@/hooks/useClickOutside'
+
+const Header = () => {
+  const [user, loading] = useAuthState(auth)
+  const favourites = useSelector(getFavourites)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const ref = useClickOutside(() =>
+    setIsMobileMenuOpen(false)
+  ) as React.RefObject<HTMLDivElement>
+
+  const menuItems = [
+    {
+      label: `Favourites ${favourites.length ? ` (${favourites.length})` : ''}`,
+      path: '/favourites'
+    },
+    {
+      label: 'Countries',
+      path: '/countries'
+    },
+    {
+      label: 'Scatter',
+      path: '/scatter'
+    }
+  ]
+
+  return (
+    <header className="w-full flex justify-between items-center h-20 z-50 px-3 sm:px-8">
+      <nav className="hidden sm:flex container items-center gap-6 justify-start h-full w-full">
+        <CustomNavLink to="/" label="Home" />
+        {!loading && user && (
+          <>
+            {menuItems.map((item) => {
+              return (
+                <CustomNavLink
+                  key={item.path}
+                  to={item.path}
+                  label={item.label}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                />
+              )
+            })}
+          </>
+        )}
+      </nav>
+      <section className="hidden sm:flex">
+        <AuthButtons />
+      </section>
+      {/* Mobile menu */}
+      <Hamburger onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
+      <div
+        ref={ref}
+        style={{ display: isMobileMenuOpen ? 'block' : 'none' }}
+        onClick={(e) => setIsMobileMenuOpen(false)}
+      ></div>
+      <nav
+        className={`${
+          isMobileMenuOpen ? 'flex' : 'hidden'
+        } fixed bottom-0 left-0 bg-white/90 z-50 flex flex-col items-center p-3 gap-3 justify-between h-3/6 w-full rounded-t-lg animate-mobMenu border-t `}
+      >
+        <CustomNavLink
+          to="/"
+          label="Home"
+          onClick={() => setIsMobileMenuOpen(false)}
+          mobile={true}
+        />
+        {!loading && user && (
+          <>
+            {menuItems.map((item) => (
+              <CustomNavLink
+                key={item.path}
+                to={item.path}
+                label={item.label}
+                onClick={() => setIsMobileMenuOpen(false)}
+                mobile={true}
+              />
+            ))}
+          </>
+        )}
+        <AuthButtons />
+      </nav>
+    </header>
+  )
+}
+
+export default Header
