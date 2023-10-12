@@ -6,12 +6,12 @@ import Home from '@/pages/Home'
 import Login from '@/pages/Login'
 import Register from '@/pages/Register'
 
-import Countries from '@/components/Countries'
+import Countries from '@/pages/Countries'
 import Layout from '@/components/Layout'
 
-import ProtectedRoute from '@/app/auth/ProtectedRoute'
-import { auth } from '@/app/auth/firebase'
-import { useGetCountriesQuery } from '@/app/services/countries'
+import ProtectedRoute from '@/components/ProtectedRoute'
+import { auth } from '@/app/services/auth/firebase'
+import { useGetCountriesQuery } from '@/app/services/countries/countries'
 
 import { useAppDispatch } from '@/hooks/redux'
 
@@ -20,7 +20,6 @@ function App() {
   const dispatch = useAppDispatch()
   const {
     data = [],
-    error,
     isSuccess,
     refetch
   } = useGetCountriesQuery({ skip: !user })

@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import CountryCard from '@/components/CountryCard'
 import Filter from '@/components/Filter'
 
-import { useGetCountriesQuery } from '@/app/services/countries'
+import { useGetCountriesQuery } from '@/app/services/countries/countries'
 
 const Countries = () => {
   const [search, setSearch] = useState('')

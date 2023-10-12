@@ -5,8 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Form, { InputType } from '@/components/Form'
 import PageWithForm from '@/components/PageWithForm'
 
-import { loginWithEmailAndPassword } from '@/app/auth/firebase'
-import { auth } from '@/app/auth/firebase'
+import { auth, loginWithEmailAndPassword } from '@/app/services/auth/firebase'
 
 const Login = () => {
   const [user, loading] = useAuthState(auth)

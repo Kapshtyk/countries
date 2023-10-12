@@ -16,7 +16,7 @@ import {
 } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBtFeT1EZWDokmPFMIyag6hVOiOvTWOAMQ',
+  apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
   authDomain: 'countries-78568.firebaseapp.com',
   projectId: 'countries-78568',
   storageBucket: 'countries-78568.appspot.com',

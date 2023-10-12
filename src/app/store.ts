@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import favouritesReducer from '../features/favourites/favouritesSlice'
-import { countriesApi } from './services/countries'
+import { countriesApi } from './services/countries/countries'
 
 export const store = configureStore({
   reducer: {

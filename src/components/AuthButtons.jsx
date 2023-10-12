@@ -4,8 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import { Button } from '@/ui/button'
 
-import { logout } from '@/app/auth/firebase'
-import { auth } from '@/app/auth/firebase'
+import { auth, logout } from '@/app/services/auth/firebase'
 
 const AuthButtons = () => {
   const [user, loading] = useAuthState(auth)

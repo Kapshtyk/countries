@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Link } from 'react-router-dom'
 
-import { auth, toggleFavourites } from '@/app/auth/firebase'
+import { auth, toggleFavourites } from '@/app/services/auth/firebase'
 
 import {
   getFavourites,
@@ -43,44 +43,41 @@ const CountryCard = ({ country }: ICountryCard) => {
   }
 
   return (
-    <>
-      <div className="container bg-white w-full relative rounded-md shadow-md border p-3 hover:shadow-lg border-slate-100 hover:border-slate-200 mt-3 max-w-md transition-all duration-300 ease-in-out">
-        <Link
-          className={`text-decoration-none hover:text-black`}
-          to={`/countries/${country.name.common}`}
-          state={{ country: country }}
-        >
-          <h2 className="text-xl font-medium">{country.name.common}</h2>
-          <p className="text-sm font-light">{country.name.official}</p>
-          <div className="grid grid-cols-1 divide-y">
-            <div className="py-2 pt-4 text-xs font-extralight">
-              <span className="bi bi-translate me-2"></span>
-              {Object.values(country.languages ?? {}).join(', ')}
-            </div>
-            <div className="py-2 text-xs font-extralight">
-              <span className="bi bi-cash-coin me-2"></span>
-              {Object.values(country.currencies ?? {})
-                .map((currency) => currency.name)
-                .join(', ')}
-            </div>
-            <div className="py-2 text-xs font-extralight">
-              <span className="bi bi-people me-2"></span>
-              {country && country.population.toLocaleString()}
-            </div>
+    <div className="container bg-white w-full relative rounded-md shadow-md border p-3 hover:shadow-lg border-slate-100 hover:border-slate-200 mt-3 max-w-md transition-all duration-300 ease-in-out">
+      <Link
+        className={`text-decoration-none hover:text-black`}
+        to={`/countries/${country.name.common}`}
+        state={{ country: country }}
+      >
+        <h2 className="text-xl font-medium">{country.name.common}</h2>
+        <p className="text-sm font-light">{country.name.official}</p>
+        <div className="grid grid-cols-1 divide-y">
+          <div className="py-2 pt-4 text-xs font-extralight">
+            <span className="bi bi-translate me-2"></span>
+            {Object.values(country.languages ?? {}).join(', ')}
           </div>
-        </Link>
-        <button
-          className="absolute top-4 right-5 hover:animate-ping z-40"
-          onClick={(e) => handleClickFavourites(e)}
-        >
-          <span
-            className={`${
-              isFavourite ? 'bi bi-star-fill' : 'bi bi-star'
+          <div className="py-2 text-xs font-extralight">
+            <span className="bi bi-cash-coin me-2"></span>
+            {Object.values(country.currencies ?? {})
+              .map((currency) => currency.name)
+              .join(', ')}
+          </div>
+          <div className="py-2 text-xs font-extralight">
+            <span className="bi bi-people me-2"></span>
+            {country?.population.toLocaleString()}
+          </div>
+        </div>
+      </Link>
+      <button
+        className="absolute top-4 right-5 hover:animate-ping z-40"
+        onClick={(e) => handleClickFavourites(e)}
+      >
+        <span
+          className={`${isFavourite ? 'bi bi-star-fill' : 'bi bi-star'
             } text-orange-400`}
-          ></span>
-        </button>
-      </div>
-    </>
+        ></span>
+      </button>
+    </div>
   )
 }
 

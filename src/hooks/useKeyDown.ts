@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
 
-interface IKeyDown {
-  (callback: () => void, keys: string[], modifier?: boolean): void
-}
+type KeyDownCallback = () => void
 
-export const useKeyDown: IKeyDown = (callback, keys, modifier) => {
+export const useKeyDown = (
+  callback: KeyDownCallback,
+  keys: string[],
+  modifier?: boolean
+) => {
   const onKeyDown = (event: KeyboardEvent) => {
     const wasAnyKeyPressed = keys.some((key) => event.key === key)
     const wasModifierPressed = modifier ? event.ctrlKey : true
@@ -13,6 +15,7 @@ export const useKeyDown: IKeyDown = (callback, keys, modifier) => {
       callback()
     }
   }
+
   useEffect(() => {
     document.addEventListener('keydown', onKeyDown)
     return () => {

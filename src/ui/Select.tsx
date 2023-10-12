@@ -52,9 +52,8 @@ const Select = ({
           {placeholder}
         </label>
         <div
-          className={`${styles.select_field} ${
-            isListOpen && 'outline outline-sky-300 outline-2'
-          }`}
+          className={`${styles.select_field} ${isListOpen && 'outline outline-sky-300 outline-2'
+            }`}
           tabIndex={10}
           id={id}
           {...rest}
@@ -70,9 +69,8 @@ const Select = ({
               .sort((a, b) => a.localeCompare(b))
               .map((value) => (
                 <li
-                  className={`h-8 px-2 hover:bg-slate-200 border-b flex items-center ${
-                    selected.includes(value) && 'font-normal bg-slate-100'
-                  }`}
+                  className={`h-8 px-2 hover:bg-slate-200 border-b flex items-center ${selected.includes(value) && 'font-normal bg-slate-100'
+                    }`}
                   key={value}
                   value={value}
                   onClick={(e) => handleItemsClick(e, value)}
