@@ -1,8 +1,7 @@
+import { Button } from '@/ui'
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useLocation, useNavigate } from 'react-router-dom'
-
-import { Button } from '@/ui/button'
 
 import { auth, logout } from '@/app/services/auth/firebase'
 

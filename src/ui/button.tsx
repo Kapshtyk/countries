@@ -13,10 +13,12 @@ const buttonVariants = cva(
           'bg-sky-400 hover:bg-sky-300 active:bg-sky-200  text-white focus:outline-sky-500',
         outline:
           'bg-white hover:text-sky-300 border-2 border-sky-400	hover:border-sky-300 active:text-sky-200 text-sky-400 focus:outline-sky-500',
-        link: 'text-primary underline-offset-4 hover:underline'
+        mini: 'rounded-md shadow-sm text-xs text-sky-300 font-normal border',
+        blank: 'text-xs text-sky-300 font-normal'
       },
       size: {
-        default: 'w-36 h-9 my-3 '
+        default: 'w-36 h-9 my-3',
+        mini: 'w-6 h-6 my-0 '
       }
     },
     defaultVariants: {
@@ -28,7 +30,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean
 }
 

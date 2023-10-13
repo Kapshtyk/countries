@@ -1,8 +1,7 @@
 import React from 'react'
 
 import Search from '@/components/Search'
-
-import Select from '@/ui/Select'
+import Select from '@/components/Select'
 
 interface IFilter {
   search: string
@@ -20,7 +19,7 @@ const Filter = ({
   setSelected
 }: IFilter) => {
   return (
-    <section className="w-full gap-2 flex flex-col sm:flex-row justify-between">
+    <section className="w-full p-2 gap-2 flex flex-col sm:flex-row justify-between">
       <Search search={search} setSearch={setSearch} />
       <Select
         id="region-select"

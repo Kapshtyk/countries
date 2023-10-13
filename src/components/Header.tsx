@@ -1,10 +1,10 @@
+import { Hamburger } from '@/ui'
 import React, { useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useSelector } from 'react-redux'
 
 import AuthButtons from '@/components/AuthButtons'
 import CustomNavLink from '@/components/CustomNavLink'
-import Hamburger from '@/components/Hamburger'
 
 import { auth } from '@/app/services/auth/firebase'
 
@@ -20,7 +20,6 @@ const Header = () => {
     setIsMobileMenuOpen(false)
   ) as React.RefObject<HTMLDivElement>
 
-
   const favouritesString = favourites.length ? ` (${favourites.length})` : ''
   const menuItems = [
     {
@@ -32,8 +31,8 @@ const Header = () => {
       path: '/countries'
     },
     {
-      label: 'Scatter',
-      path: '/scatter'
+      label: 'Diagrams',
+      path: '/diagrams'
     }
   ]
 

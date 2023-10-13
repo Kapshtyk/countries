@@ -1,8 +1,6 @@
+import { Button, Input } from '@/ui'
 import React, { useEffect, useState } from 'react'
 import { ZodError, z } from 'zod'
-
-import Input from '@/ui/Input'
-import { Button } from '@/ui/button'
 
 import useForm from '@/hooks/useForm'
 
@@ -11,10 +9,6 @@ const InputSchema = z.object({
   password: z
     .string()
     .min(6, 'Password should consist of at least 6 characters')
-    .optional(),
-  passwordConfirm: z
-    .string()
-    .min(6, 'Password confirmation should consist of at least 6 characters')
     .optional(),
   name: z
     .string()
@@ -25,7 +19,6 @@ const InputSchema = z.object({
 enum EInputs {
   email = 'email',
   password = 'password',
-  passwordConfirm = 'password',
   name = 'text'
 }
 

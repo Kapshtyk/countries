@@ -24,7 +24,8 @@ module.exports = {
       },
       animation: {
         underline: 'appear 0.5s linear forwards',
-        mobMenu: 'mobMenu 0.2s linear forwards'
+        mobMenu: 'mobMenu 0.2s linear forwards',
+        pingOnce: 'ping 0.5s linear forwards'
       }
     }
   },

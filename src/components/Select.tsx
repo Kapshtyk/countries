@@ -1,9 +1,9 @@
+import { Button } from '@/ui'
 import React, { useState } from 'react'
-
-import styles from '@/ui/Select.module.css'
 
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useKeyDown } from '@/hooks/useKeyDown'
+import { DoubleArrowDownIcon } from '@radix-ui/react-icons'
 
 interface ISelect {
   values: string[]
@@ -45,15 +45,16 @@ const Select = ({
     setIsListOpen(false)
   ) as React.RefObject<HTMLUListElement>
 
+  const styleIfListOpen = isListOpen ? 'outline outline-sky-300 outline-2' : ''
+
   return (
-    <div className="w-96">
+    <div className="w-full max-w-md sm:max-w-sm self-center">
       <div className="relative">
         <label htmlFor={id} className="sr-only">
           {placeholder}
         </label>
         <div
-          className={`${styles.select_field} ${isListOpen && 'outline outline-sky-300 outline-2'
-            }`}
+          className={`relative h-10 bg-white text-sm text-slate-400 font-light p-2 w-full border border-sky-200 rounded-md focus:outline-sky-300 focus:outline-2 ${styleIfListOpen}`}
           tabIndex={10}
           id={id}
           {...rest}
@@ -62,7 +63,7 @@ const Select = ({
           {selected.length === 0 ? placeholder : selected.join(', ')}
           <ul
             ref={ref}
-            className="absolute top-[41px] py-2 left-0 w-96 px-4 bg-white border border-gray-300 rounded-md shadow-lg z-50"
+            className="absolute top-[41px] py-2 left-0 w-full max-w-md sm:max-w-sm px-4 bg-white border border-gray-300 rounded-md shadow-lg z-50"
             style={{ display: isListOpen ? 'block' : 'none' }}
           >
             {values
@@ -80,13 +81,18 @@ const Select = ({
               ))}
           </ul>
           {isListOpen && (
-            <button
+            <Button
+              variant="mini"
+              size="mini"
               style={{ display: isListOpen ? 'block' : 'none' }}
-              className="absolute my-2 w-8 rounded-md shadow-sm top-0 bottom-0 right-3 text-xs text-sky-300 font-normal border"
+              className="absolute w-8 top-2 bottom-0 right-3"
             >
               ESC
-            </button>
+            </Button>
           )}
+          {!isListOpen && (
+            <DoubleArrowDownIcon className="absolute w-4 h-4 top-3 right-3 text-slate-400" />)
+          }
         </div>
       </div>
     </div>

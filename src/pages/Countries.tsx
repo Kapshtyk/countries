@@ -19,10 +19,12 @@ const Countries = () => {
     return <div>Loading...</div>
   }
 
-  const countiesToShow = countriesList.filter(
-    (country) =>
-      (selected.includes(country.region) || selected.length === 0) &&
-      country.name.common.toLowerCase().includes(search.toLowerCase())
+  const countriesToShow = countriesList.filter((country) =>
+    (selected.includes(country.region) || selected.length === 0) &&
+    (
+      country.name.common.toLowerCase().includes(search.toLowerCase()) ||
+      country.name.official.toLowerCase().includes(search.toLowerCase())
+    )
   )
 
   return (
@@ -35,10 +37,10 @@ const Countries = () => {
         selected={selected}
         setSelected={setSelected}
       />
-      <div className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      <div className="grid justify-items-center w-full p-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {!countriesIsLoading &&
-          countiesToShow.length > 0 &&
-          countiesToShow.map((country) => {
+          countriesToShow.length > 0 &&
+          countriesToShow.map((country) => {
             return <CountryCard key={country.name.common} country={country} />
           })}
       </div>

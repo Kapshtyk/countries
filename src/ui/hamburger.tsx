@@ -23,4 +23,4 @@ const Hamburger = ({ onClick }: IHamburger) => {
   )
 }
 
-export default Hamburger
+export { Hamburger }

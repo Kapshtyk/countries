@@ -1,6 +1,5 @@
+import { Input } from '@/ui'
 import React, { useEffect, useState } from 'react'
-
-import Input from '@/ui/Input'
 
 import { useKeyDown } from '@/hooks/useKeyDown'
 
@@ -36,18 +35,19 @@ const Search = ({ search, setSearch }: ISearch) => {
     if (isMobile) {
       setPlaceholder('Search country by name')
     } else {
-      setPlaceholder('Ctrl + k to search by name')
+      setPlaceholder('Ctrl+K to search by name')
     }
   }, [isMobile])
 
   return (
-    <div className="w-56">
+    <div className="relative w-full max-w-md sm:max-w-[220px] self-center">
       <Input
         id="search-input"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder={placeholder}
         renderCloseButton={true}
+        renderIcon={true}
       />
     </div>
   )

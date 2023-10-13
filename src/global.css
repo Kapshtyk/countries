@@ -87,3 +87,15 @@
 h1 {
   @apply font-semibold text-3xl m-2 text-center;
 }
+.recharts-legend-item-text {
+  @apply text-sm;
+}
+
+.recharts-legend-wrapper {
+  @apply p-4 left-6;
+}
+
+.recharts-legend-item {
+  @apply w-3/12 sm:w-auto flex gap-4 items-start justify-start
+}
+

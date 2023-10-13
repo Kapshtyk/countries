@@ -5,7 +5,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import Form, { InputType } from '@/components/Form'
 import PageWithForm from '@/components/PageWithForm'
 
-import { auth, registerWithEmailAndPassword } from '@/app/services/auth/firebase'
+import {
+  auth,
+  registerWithEmailAndPassword
+} from '@/app/services/auth/firebase'
 
 const Register = () => {
   const [user, loading] = useAuthState(auth)

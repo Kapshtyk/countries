@@ -2,27 +2,29 @@ import React, { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import Countries from '@/pages/Countries'
 import Home from '@/pages/Home'
 import Login from '@/pages/Login'
 import Register from '@/pages/Register'
 
-import Countries from '@/pages/Countries'
 import Layout from '@/components/Layout'
-
 import ProtectedRoute from '@/components/ProtectedRoute'
-import { auth } from '@/app/services/auth/firebase'
+
+import { auth, getFavourites } from '@/app/services/auth/firebase'
 import { useGetCountriesQuery } from '@/app/services/countries/countries'
 
+import { setFavourites } from '@/features/favourites/favouritesSlice'
+
 import { useAppDispatch } from '@/hooks/redux'
+
+import Favourites from './pages/Favourites'
+import Diagrams from './pages/Diagrams'
+import CountriesSingle from './components/CountriesSingle'
 
 function App() {
   const [user] = useAuthState(auth)
   const dispatch = useAppDispatch()
-  const {
-    data = [],
-    isSuccess,
-    refetch
-  } = useGetCountriesQuery({ skip: !user })
+  const { refetch } = useGetCountriesQuery({ skip: !user })
 
   useEffect(() => {
     if (user) {
@@ -31,10 +33,12 @@ function App() {
   }, [user, refetch])
 
   useEffect(() => {
-    if (isSuccess) {
-      console.log(data)
+    if (user) {
+      getFavourites(user).then((favourites) => {
+        dispatch(setFavourites(favourites))
+      })
     }
-  }, [data])
+  }, [user, dispatch])
 
   return (
     <BrowserRouter>
@@ -43,28 +47,22 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {/* <Route
-          path="/scatter"
-          element={
-            <>
-              <Scatter />
-              <RadarComponent />
-            </>
-          }
-        /> */}
-
+          <Route
+            path="/diagrams"
+            element={<Diagrams />}
+          />
           <Route element={<ProtectedRoute />}>
-            {/*  <Route path="/favourites" element={<Favoutires />} /> */}
+            <Route path="/favourites" element={<Favourites />} />
             <Route path="/countries" element={<Countries />} />
-            {/*           <Route
-            path="/countries/:single"
-            element={
-              <>
-                <CountriesSidebar />
-                <CountriesSingle />
-              </>
-            }
-          /> */}{' '}
+            <Route
+              path="/countries/:single"
+              element={
+                <>
+                  {/* <CountriesSidebar /> */}
+                  <CountriesSingle />
+                </>
+              }
+            />
           </Route>
           {/*  </Route> */}
         </Route>

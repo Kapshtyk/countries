@@ -54,7 +54,6 @@ export default function validateAndCleanUpCountryData(data: any): Countries {
 
     return validatedCountries
   } catch (error: unknown) {
-    console.log(error)
     const { name = 'ZodError', issues = [] } = error as ZodError
     console.log(JSON.stringify({ name, issues, data }, null, 2))
     return []

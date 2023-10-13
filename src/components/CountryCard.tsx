@@ -1,6 +1,9 @@
+import { Button } from '@/ui'
 import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Link } from 'react-router-dom'
+
+import { StarIcon, StarFilledIcon, LetterCaseCapitalizeIcon, PersonIcon, IdCardIcon } from '@radix-ui/react-icons'
 
 import { auth, toggleFavourites } from '@/app/services/auth/firebase'
 
@@ -52,31 +55,30 @@ const CountryCard = ({ country }: ICountryCard) => {
         <h2 className="text-xl font-medium">{country.name.common}</h2>
         <p className="text-sm font-light">{country.name.official}</p>
         <div className="grid grid-cols-1 divide-y">
-          <div className="py-2 pt-4 text-xs font-extralight">
-            <span className="bi bi-translate me-2"></span>
+          <div className="py-2 pt-4 text-xs font-extralight flex items-center">
+            <LetterCaseCapitalizeIcon aria-description='languages' className="inline-block mr-1" />
             {Object.values(country.languages ?? {}).join(', ')}
           </div>
           <div className="py-2 text-xs font-extralight">
-            <span className="bi bi-cash-coin me-2"></span>
+            <IdCardIcon aria-description='currency' className="inline-block mr-1" />
             {Object.values(country.currencies ?? {})
               .map((currency) => currency.name)
               .join(', ')}
           </div>
-          <div className="py-2 text-xs font-extralight">
-            <span className="bi bi-people me-2"></span>
+          <div className="py-2 text-xs font-extralight flex items-center">
+            <PersonIcon aria-description='population' className="inline-block mr-1" />
             {country?.population.toLocaleString()}
           </div>
         </div>
       </Link>
-      <button
-        className="absolute top-4 right-5 hover:animate-ping z-40"
+      <Button
+        variant="blank"
+        size="mini"
+        className="absolute top-4 right-5 hover:text-sky-500 active:animate-pingOnce z-40 transition-all duration-300 ease-in-out"
         onClick={(e) => handleClickFavourites(e)}
       >
-        <span
-          className={`${isFavourite ? 'bi bi-star-fill' : 'bi bi-star'
-            } text-orange-400`}
-        ></span>
-      </button>
+        {isFavourite ? <StarFilledIcon /> : <StarIcon />}
+      </Button>
     </div>
   )
 }

@@ -2,11 +2,15 @@ import { createSlice } from '@reduxjs/toolkit'
 
 import { RootState } from '@/app/store'
 
+type Favourites = {
+  favourites: string[]
+}
+
 export const favouritesSlice = createSlice({
   name: 'favourites',
   initialState: {
     favourites: []
-  },
+  } as Favourites,
   reducers: {
     setFavourites: (state, action) => {
       state.favourites = action.payload

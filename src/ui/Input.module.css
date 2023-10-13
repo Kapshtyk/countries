@@ -1,7 +1,0 @@
-.input_field {
-  @apply relative font-light p-2  h-10 w-full border border-sky-200 rounded-md focus:!outline-sky-300  focus:outline-2;
-}
-
-.input_field::placeholder {
-  @apply text-sm text-slate-400;
-}
