@@ -38,15 +38,16 @@ const CountriesSidebar = () => {
             <li
               ref={
                 country.name.common ===
-                  decodeURIComponent(location.pathname.split('/')[2])
+                decodeURIComponent(location.pathname.split('/')[2])
                   ? currentCountryRef
                   : null
               }
-              className={`${country.name.common ===
+              className={`${
+                country.name.common ===
                 decodeURIComponent(location.pathname.split('/')[2])
-                ? `bg-sky-300 text-white transition-all duration-300 ease-in-out shadow-sm`
-                : ''
-                } p-2 m-2 rounded-md hover:cursor-pointer hover:bg-sky-100`}
+                  ? `bg-sky-300 text-white transition-all duration-300 ease-in-out shadow-sm`
+                  : ''
+              } p-2 m-2 rounded-md hover:cursor-pointer hover:bg-sky-100`}
               key={country.name.common}
               onClick={() => navigate(`/countries/${country.name.common}`)}
             >

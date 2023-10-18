@@ -3,7 +3,7 @@ import { ZodError, z } from 'zod'
 
 import useForm from '@/hooks/useForm'
 
-import { Button, Input } from '@/ui'
+import { Button, InputElement } from '@/ui'
 
 const InputSchema = z.object({
   email: z.string().email('Email is not valid').optional(),
@@ -84,7 +84,7 @@ export const Form = ({
       <h1 className="font-bold text-4xl m-2 text-center">{label}</h1>
       {Object.keys(initialValues).map((key) => {
         return (
-          <Input
+          <InputElement
             key={key}
             type={EInputs[key as keyof typeof EInputs]}
             id={key}

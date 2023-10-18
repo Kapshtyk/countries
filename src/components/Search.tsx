@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useKeyDown } from '@/hooks/useKeyDown'
 
-import { Input } from '@/ui'
+import { InputElement } from '@/ui'
 
 interface ISearch {
   search: string
@@ -42,7 +42,7 @@ const Search = ({ search, setSearch }: ISearch) => {
 
   return (
     <div className="relative w-full max-w-md sm:max-w-[220px] self-center">
-      <Input
+      <InputElement
         id="search-input"
         value={search}
         onChange={(e) => setSearch(e.target.value)}

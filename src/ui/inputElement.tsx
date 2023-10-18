@@ -10,7 +10,7 @@ interface IInput extends React.InputHTMLAttributes<HTMLInputElement> {
   renderIcon?: boolean
 }
 
-const Input = ({
+const InputElement = ({
   id,
   placeholder,
   onBlur,
@@ -60,4 +60,4 @@ const Input = ({
   )
 }
 
-export { Input }
+export { InputElement }

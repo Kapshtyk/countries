@@ -7,11 +7,12 @@ const About = () => {
       <p>
         This is a simple React application made in Business College Helsinki
         lessons. App uses{' '}
-        <a href="https://restcountries.com/">https://restcountries.com/ </a>{' '}
-        and <a href="https://openweathermap.org/">https://openweathermap.org/</a>
+        <a href="https://restcountries.com/">https://restcountries.com/ </a> and{' '}
+        <a href="https://openweathermap.org/">https://openweathermap.org/</a>
       </p>
       <p>
-        The tech stack is: React, TypeScript, TailwindCSS, Zod, React Router, Redux Toolkit, RTK Query, Firebase
+        The tech stack is: React, TypeScript, TailwindCSS, Zod, React Router,
+        Redux Toolkit, RTK Query, Firebase
       </p>
     </div>
   )
