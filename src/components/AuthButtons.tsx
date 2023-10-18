@@ -17,7 +17,10 @@ const AuthButtons = () => {
           <Button
             type="button"
             variant="default"
-            onClick={() => navigate('/register')}
+            onClick={
+              () => {
+                navigate('/register')
+              }}
           >
             Register
           </Button>

@@ -20,11 +20,12 @@ import { useAppDispatch } from '@/hooks/redux'
 import CountriesSingle from './components/CountriesSingle'
 import Diagrams from './pages/Diagrams'
 import Favourites from './pages/Favourites'
+import CountriesSidebar from './components/CountriesSidebar'
 
 function App() {
   const [user] = useAuthState(auth)
   const dispatch = useAppDispatch()
-  const [trigger] = useLazyGetCountriesQuery()
+  const [trigger, result] = useLazyGetCountriesQuery()
 
   useEffect(() => {
     if (user) {
@@ -55,7 +56,7 @@ function App() {
               path="/countries/:single"
               element={
                 <>
-                  {/* <CountriesSidebar /> */}
+                  <CountriesSidebar />
                   <CountriesSingle />
                 </>
               }

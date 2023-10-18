@@ -36,6 +36,7 @@ const Diagrams = () => {
 
   return (
     <>
+      <h1>Diagrams</h1>
       <div className="flex flex-wrap justify-center items-center">
         {regions.map((region) => (
           <div key={region} className="w-1/3">
@@ -57,8 +58,13 @@ const Diagrams = () => {
           </div>
         ))}
       </div>
-      <ScatterComponent regions={selectedRegions} />
-      <AreaComponent regions={selectedRegions} />
+      {selectedRegions.length !== 0 && (
+        <>
+          <ScatterComponent regions={selectedRegions} />
+          <AreaComponent regions={selectedRegions} />
+        </>
+      )
+      }
     </>
   )
 }

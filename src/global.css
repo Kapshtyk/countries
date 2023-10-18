@@ -80,16 +80,28 @@
 }
 
 .active::after {
-  @apply h-[3px] absolute bg-gradient-to-r from-sky-200 to-sky-400 to-100% bottom-0 left-0 animate-underline;
+  @apply h-[4px] absolute bg-gradient-to-r from-sky-200 to-sky-400 to-100% bottom-[-2px] left-0 animate-underline;
   content: '';
 }
 
 h1 {
-  @apply font-semibold text-3xl m-2 text-center;
+  @apply font-semibold text-3xl my-2 text-center;
 }
+
+h2 {
+  @apply font-normal text-2xl my-2 text-start;
+}
+
+p {
+  @apply text-base font-light text-start;
+}
+
+
 .recharts-legend-item-text {
   @apply text-sm;
 }
+
+
 
 .recharts-legend-wrapper {
   @apply p-4 left-6;

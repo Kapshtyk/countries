@@ -1,5 +1,5 @@
 import { Hamburger } from '@/ui'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useSelector } from 'react-redux'
 
@@ -16,8 +16,9 @@ const Header = () => {
   const [user, loading] = useAuthState(auth)
   const favourites = useSelector(getFavourites)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const ref = useClickOutside(() =>
+  const ref = useClickOutside(() => {
     setIsMobileMenuOpen(false)
+  }
   ) as React.RefObject<HTMLDivElement>
 
   const favouritesString = favourites.length ? ` (${favourites.length})` : ''
@@ -37,8 +38,8 @@ const Header = () => {
   ]
 
   return (
-    <header className="w-full flex justify-between items-center h-20 z-50 px-3 sm:px-8">
-      <nav className="hidden sm:flex container items-center gap-6 justify-start h-full w-full">
+    <header className="w-full flex justify-between items-center h-20 z-50 px-3 sm:px-8 border-b border-slate-200 shadow-sm">
+      <nav className="hidden sm:flex container font-light items-center gap-6 justify-start h-full w-full">
         <CustomNavLink to="/" label="Home" />
         {!loading && user && (
           <>
@@ -62,13 +63,8 @@ const Header = () => {
       <Hamburger onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
       <div
         ref={ref}
-        style={{ display: isMobileMenuOpen ? 'block' : 'none' }}
-        onClick={(e) => setIsMobileMenuOpen(false)}
-      ></div>
-      <nav
-        className={`${
-          isMobileMenuOpen ? 'flex' : 'hidden'
-        } fixed bottom-0 left-0 bg-white/90 z-50 flex flex-col items-center p-3 gap-3 justify-between h-3/6 w-full rounded-t-lg animate-mobMenu border-t `}
+        className={`${isMobileMenuOpen ? 'flex' : 'hidden'
+          } fixed bottom-0 left-0 bg-white/90 z-40 flex flex-col items-center p-3 gap-3 justify-between h-3/6 w-full rounded-t-lg animate-mobMenu border-t `}
       >
         <CustomNavLink
           to="/"
@@ -83,14 +79,14 @@ const Header = () => {
                 key={item.path}
                 to={item.path}
                 label={item.label}
-                onClick={() => setIsMobileMenuOpen(false)}
                 mobile={true}
+                onClick={() => setIsMobileMenuOpen(false)}
               />
             ))}
           </>
         )}
         <AuthButtons />
-      </nav>
+      </div>
     </header>
   )
 }

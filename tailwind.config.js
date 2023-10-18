@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        singleCountryView: '1210px'
+      },
       maxHeight: {
         'screen-without-header': 'calc(100vh - 80px)'
       },

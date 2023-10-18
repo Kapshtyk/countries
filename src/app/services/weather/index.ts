@@ -30,4 +30,4 @@ export const weatherApi = createApi({
   })
 })
 
-export const { useGetWeatherQuery } = weatherApi
+export const { useLazyGetWeatherQuery } = weatherApi

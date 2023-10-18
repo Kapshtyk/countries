@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
-import { useLazyGetCountriesQuery } from '@/app/services/countries/countries'
-import { useGetWeatherQuery } from '@/app/services/weather/weather'
+import { useGetCountriesQuery, useLazyGetCountriesQuery } from '@/app/services/countries/countries'
+import { useLazyGetWeatherQuery } from '@/app/services/weather'
 
 import { useKeyDown } from '@/hooks/useKeyDown'
 
@@ -13,12 +13,16 @@ import MapComponent from '@/components/MapComponent' */
 import { Country } from '@/lib/zod/countries'
 
 import Error from './Error'
+import BarChartView from './BarChartView'
+import MapComponent from './MapComponent'
 
 const CountriesSingle = () => {
   const countryName = decodeURI(useLocation().pathname.split('/')[2])
   const location = useLocation()
   const navigate = useNavigate()
   const [country, setCountry] = useState<Country | undefined>()
+  const [countryIndex, setCountryIndex] = useState<number | undefined>()
+  const { data: countriesList = [] } = useGetCountriesQuery(null)
   const [trigger, result] = useLazyGetCountriesQuery({
     selectFromResult: ({ data, error, isSuccess, isError }) => ({
       country:
@@ -30,6 +34,8 @@ const CountriesSingle = () => {
       isSuccess
     })
   })
+  const [weatherTrigger, weatherResult] = useLazyGetWeatherQuery()
+
 
   // fetch the country data from the API or cache if it is not in the React-router location state
   useEffect(() => {
@@ -47,13 +53,41 @@ const CountriesSingle = () => {
     }
   }, [result])
 
-  if (result.isSuccess && !result.country) {
+  // get the current country index in the countries list
+  useEffect(() => {
+    if (country && countriesList.length > 0) {
+      console.log("set country index")
+      setCountryIndex(
+        countriesList.findIndex((c) => c.name.common === country.name.common)
+      )
+    }
+  }, [country, countriesList])
+
+  // fetch the weather data for the country
+  useEffect(() => {
+    if (country && country.capitalInfo.latlng?.length == 2) {
+      weatherTrigger({ lat: country.capitalInfo.latlng[0], lon: country.capitalInfo.latlng[1] })
+    }
+  }, [country])
+
+  //hooks for navigation with arrow keys
+  useKeyDown(() => {
+    handleNextAndPreviousClick(1)
+  }, ['ArrowRight'])
+
+  useKeyDown(() => {
+    handleNextAndPreviousClick(-1)
+  }, ['ArrowLeft'])
+
+
+  // Display error message if country is not found in the API or cache
+  if (result.isSuccess && !result.country && !country) {
     return (
-      <div>{`We do not have any information about the country ${countryName} yet.`}</div>
+      <Error message={`We do not have any information about the country ${countryName} yet.`} />
     )
   }
 
-
+  // Display error message if country data can not be fetched because of an error
   if (result.isError) {
     return (
       <Error
@@ -62,178 +96,141 @@ const CountriesSingle = () => {
     )
   }
 
-  /*   useKeyDown(() => {
-      handleNextAndPreviousClick(1)
-    }, ['ArrowRight'])
-   */
-  /* useKeyDown(() => {
-    handleNextAndPreviousClick(-1)
-  }, ['ArrowLeft'])
-   
-  useEffect(() => {
-    if (location.state) {
-      setCountry(location.state.country)
-    }
-  }, [location])
-   
-  useEffect(() => {
-    if (!country && countriesList.length > 0) {
-      const country = countriesList.find(
-        (country) => country.name.common === location.pathname.split('/')[2]
-      )
-      if (country) {
-        setCountry(country)
-      }
-      if (country?.capitalInfo.latlng) {
-        setCoords({ lat: country.capitalInfo.latlng[0], lon: country.capitalInfo.latlng[1] })
-      }
-    }
-  }, [countriesList, country, location.pathname])
-   
-  useEffect(() => {
-    if (country && country.capitalInfo.latlng) {
-      refetch()
-    }
-  }, [country, refetch])
-   
-  useEffect(() => {
-    if (country && countriesList.length > 0) {
-      setCountryIndex(
-        countriesList.findIndex((c) => c.name.common === country.name.common)
-      )
-    }
-  }, [country, countriesList])
-   
-  useEffect(() => {
-    if (weatherError) {
-      setError(`Weather forecast not available for ${country?.name.common}.`)
-    }
-  }, [country])
-   
+  if (!country) {
+    return null
+  }
+
   const handleNextAndPreviousClick = (value: number) => {
-    if (countryIndex) {
+    if (typeof countryIndex !== "undefined") {
       const country = countriesList[countryIndex + value]
       if (country) {
         navigate(`/countries/${country.name.common}`, { state: { country } })
       }
     }
-  } */
+  }
 
-  /*  if (!country) {
-     return (
-       <div className="">
-         {/*    <Spinner
-           animation="border"
-           role="status"
-           className="center"
-           variant="danger"
-         /> 
-         <p className="text-center">
-           {countriesFetchingError ? 'Error fetching data' : ''}
-         </p>
-       </div>
-     )
-   } */
   return (
-    <div>HELLO</div>
-    /*  <>
-       <div className="w-8/12 border border-gray-100 rounded-md shadow-md m-auto gap-2 p-3 mt-2 grid grid-cols-3 grid-rows-2">
-         <div className="col-start-2 row-start-2 col-span-2 w-full h-full relative rounded-md overflow-hidden">
-           {/* <MapComponent country={country} /> 
-         </div>
-         <div className="col-span-1">
-           <h1 className="font-normal text-4xl">{country.capital}</h1>
-           <p className="font-light mt-2">
-             {country.population &&
-               `Population: ${country.population.toLocaleString()}`}
-           </p>
-           <p className="font-light mt-2">Region: {country.region}</p>
-           <p className="font-light mt-2">
-             Area: {country.area.toLocaleString()} km<sup>2</sup>
-           </p>
-           <p className="font-light mt-2">
-             {country.languages &&
-               `Language${Object.values(country.languages ?? {}).length > 1 ? 's' : ''
-               }: ${Object.values(country.languages || {}).join(', ')}`}
-           </p>
-           {country.borders && (
-             <p className="font-normal mt-2">
-               {`Neighbor${country.borders.length > 1 ? 's' : ''}: `}
-               {countriesList.length > 0 &&
-                 country.borders.map((border) => {
-                   const neighbor = countriesList.find(
-                     (country) => country.cca3 === border
-                   )
-                   return (
-                     <span key={border}>
-                       <Link
-                         className="text-blue-500 hover:underline"
-                         to={`/countries/${neighbor?.name.common}`}
-                         state={{ country: neighbor }}
-                       >
-                         {neighbor?.name.common}
-                       </Link>
-                     </span>
-                   )
-                 })}
-             </p>
-           )}
-           {error && (
-             <p>{error ?? 'Weather forecast not available at the moment.'}</p>
-           )}
-           {weather && (
-             <div>
-               <h2 className="font-normal mt-2">
-                 Weather in {country.capital}:
-               </h2>
-               <p className="font-light mt-2">
-                 <strong>Temperature:</strong> {weather.main.temp} Celsius
-               </p>
-               {weather.weather.map((weather) => (
-                 <img
-                   key={weather.id}
-                   src={weatherService.getWeatherIconURL(weather.icon)}
-                   alt={weather.description}
-                 />
-               ))}
-               <p>
-                 <strong>Wind:</strong> {weather.wind.speed} mps, wind direction:{' '}
-                 {weatherService.getWindDirection(weather.wind.deg)}
-               </p>
-             </div>
-           )}
-         </div>
-         <div className="col-span-2 col-start-2 relative">
-           <div className="w-full rounded-md overflow-hidden">
-             <img
-               className="object-cover w-full"
-               src={`https://source.unsplash.com/700x400/?${country.name.common}`}
-               alt={`${country.name.common}`}
-             />
-           </div>
-           <div className="lg:w-2/12 w-3/12 absolute top-5 right-5 rounded-md overflow-hidden">
-             <img src={country.flags.png} alt={country.flags.alt} />
-           </div>
-         </div>
-         <div className="row-start-2 col-start-1 w-full h-full">
-            <BarChartView country={country} / >
-         </div>
-       </div>
-       <button
-         disabled={countryIndex === 0}
-         onClick={() => handleNextAndPreviousClick(-1)}
-         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed"
-       >
-         Previous
-       </button>
-       <button
-         disabled={countryIndex === countriesList.length - 1}
-         onClick={() => handleNextAndPreviousClick(1)}
-         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed"
-       >
-         Next
-       </button>
-     </> */
+    <>
+      <div className="w-full md:w-[calc(100vw-208px)] md:absolute md:right-0 flex flex-col items-center p-2">
+        <section className="max-w-5xl">
+          <article className="flex flex-wrap">
+            <div className="full md:w-6/12">
+              <header>
+                <h1 className="text-start">{country.name.common}</h1>
+              </header>
+              <section className="grid gap-2 grid-cols-3 auto-rows-max">
+                <p>Region:</p>
+                <span className="font-extralight col-span-2 w-80">{country.region}</span>
+                <p>Capital:</p>
+                <span className="font-extralight col-span-2">{country.capital}</span>
+                <p>Population:</p>
+                <span className="font-extralight col-span-2">{country.population.toLocaleString()}</span>
+                <p>Area:</p>
+                <span className="font-extralight col-span-2">{country.area.toLocaleString()} km<sup>2</sup></span>
+                <p>Language{Object.values(country.languages ?? {}).length > 1 ? 's' : ''}:</p>
+                <ul className="font-extralight col-span-2">
+                  {Object.values(country.languages ?? {}).map((language) => {
+                    return <li key={language}>{language}</li>
+                  })}
+                </ul>
+                <p>Currens{Object.values(country.currencies ?? {}).length > 1 ? 'ies' : 'y'}:</p>
+                <ul className="font-extralight col-span-2">
+                  {Object.keys(country.currencies ?? {}).map((key) => {
+                    if (country.currencies) {
+                      return <li key={key}>{country.currencies[key].name}</li>
+                    }
+                  })}
+                </ul>
+                <p>{country.borders &&
+                  `Border${country.borders.length > 1 ? 's' : ''}:`}
+                </p>
+                <ul className="font-extralight grid col-span-2 grid-cols-2 auto-rows-max">
+                  {country.borders && country.borders.map((border) => {
+                    const country = countriesList.find(
+                      (country) => country.cca3 === border
+                    )
+                    if (country) {
+                      return (
+                        <li className="underline underline-offset-4 mb-2" key={country.name.common}>
+                          <Link
+                            to={`/countries/${country.name.common}`}
+                            className="hover:underline"
+                          >
+                            {country.name.common}&nbsp;{country.flag}
+                          </Link>
+                        </li>
+                      )
+                    }
+                  })
+                  }
+                </ul>
+
+                {weatherResult.data && (
+                  <>
+                    <p>Weather in {country.capital}:</p>
+                    <ul className="font-extralight col-span-2">
+                      <li>{`Temperature: ${weatherResult.data.main.temp} Celsius`}</li>
+                      <li>
+                        {`Wind: ${weatherResult.data.wind.speed} mps, direction: ${weatherService.getWindDirection(weatherResult.data.wind.deg)}`}
+                      </li>
+                      <li>Clouds: {weatherResult.data.weather.map((weather) => (
+                        <img
+                          className="w-8 h-8 inline-block"
+                          key={weather.id}
+                          src={weatherService.getWeatherIconURL(weather.icon)}
+                          alt={weather.description}
+                        />
+                      ))}</li>
+                    </ul>
+                  </>
+                )}
+              </section>
+            </div>
+            <div className="full md:w-6/12 h-[300px] md:h-[400px] items-center">
+              <h2>Area and Population comparison</h2>
+              <div className="h-full">
+                <BarChartView country={country} />
+              </div>
+            </div>
+          </article>
+          <div className="w-full relative py-2">
+            <div className="w-full rounded-md overflow-hidden">
+              <img
+                className="object-cover w-full"
+                src={`https://source.unsplash.com/700x400/?${country.name.common}`}
+                alt={`${country.name.common}`}
+              />
+            </div>
+            <div className="lg:w-2/12 w-3/12 absolute top-5 right-5 rounded-md overflow-hidden">
+              <img src={country.flags.png} alt={country.flags.alt} />
+            </div>
+          </div>
+          <div className="w-full h-[400px] rounded-md overflow-hidden">
+            <MapComponent country={country} />
+          </div>
+        </section>
+
+
+
+
+
+        {/*  <button
+        disabled={countryIndex === 0}
+        onClick={() => handleNextAndPreviousClick(-1)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Previous
+      </button>
+      <button
+        disabled={countryIndex === countriesList.length - 1}
+        onClick={() => handleNextAndPreviousClick(1)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Next
+      </button> */}
+      </div >
+
+    </>
   )
 }
 
