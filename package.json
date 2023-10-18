@@ -2,6 +2,7 @@
   "name": "countries_typescript",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kapshtyk.github.io/countries_typescript",
   "dependencies": {
     "@firebase/firestore": "^4.2.0",
     "@radix-ui/react-checkbox": "^1.0.4",
@@ -37,6 +38,8 @@
     "zod": "^3.22.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-app-rewired build",
     "start": "cross-env REACT_APP_ENV=development react-app-rewired start",
     "start-test": "cross-env REACT_APP_ENV=test react-app-rewired start",
@@ -71,6 +74,7 @@
     "cross-env": "^7.0.3",
     "cypress": "^13.3.1",
     "eslint-plugin-cypress": "^2.15.1",
+    "gh-pages": "^6.0.0",
     "react-app-rewired": "^2.2.1",
     "tailwindcss": "^3.3.3"
   }

@@ -28,7 +28,7 @@ function App() {
 
   useEffect(() => {
     if (user) {
-      trigger()
+      trigger(null, true)
     }
   }, [user, trigger])
 
