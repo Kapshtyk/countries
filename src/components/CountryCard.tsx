@@ -50,7 +50,7 @@ const CountryCard = ({ country }: ICountryCard) => {
           </div>
         </div>
       </Link>
-      <Favourite country={country} top={6} right={5} />
+      <Favourite country={country} top={3} right={5} />
     </div>
   )
 }
