@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   CartesianGrid,
@@ -13,8 +13,8 @@ import {
 } from 'recharts'
 
 import { useGetCountriesQuery } from '@/app/services/countries/countries'
-import { getRegionColor } from '@/lib/helpers/regionColors'
 
+import { getRegionColor } from '@/lib/helpers/regionColors'
 
 interface IScatterComnonents {
   regions: string[]
@@ -101,7 +101,7 @@ const ScatterComponent = ({ regions }: IScatterComnonents) => {
                 }))}
               fill={getRegionColor(region)}
               onClick={(e: any) => {
-                !isMobile ? navigate(`/countries/${e.name}`) : null
+                !isMobile && navigate(`/countries/${e.name}`)
               }}
             />
           ))}

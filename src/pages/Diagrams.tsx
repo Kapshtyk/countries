@@ -1,10 +1,11 @@
-import { Checkbox } from '@/ui'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
 import AreaComponent from '@/components/AreaComponent'
 import ScatterComponent from '@/components/ScatterComponent'
 
 import { useGetCountriesQuery } from '@/app/services/countries/countries'
+
+import { Checkbox } from '@/ui'
 
 const Diagrams = () => {
   const { data: countriesList = [] } = useGetCountriesQuery(null)
@@ -63,8 +64,7 @@ const Diagrams = () => {
           <ScatterComponent regions={selectedRegions} />
           <AreaComponent regions={selectedRegions} />
         </>
-      )
-      }
+      )}
     </>
   )
 }

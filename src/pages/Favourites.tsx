@@ -1,4 +1,3 @@
-import { Button } from '@/ui'
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
@@ -16,6 +15,8 @@ import {
 } from '@/features/favourites/favouritesSlice'
 
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
+
+import { Button } from '@/ui'
 
 const Favourites = () => {
   const [user] = useAuthState(auth)

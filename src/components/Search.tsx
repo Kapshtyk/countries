@@ -1,7 +1,8 @@
-import { Input } from '@/ui'
 import React, { useEffect, useState } from 'react'
 
 import { useKeyDown } from '@/hooks/useKeyDown'
+
+import { Input } from '@/ui'
 
 interface ISearch {
   search: string

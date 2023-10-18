@@ -1,9 +1,10 @@
-import { Button } from '@/ui'
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import { auth, logout } from '@/app/services/auth/firebase'
+
+import { Button } from '@/ui'
 
 const AuthButtons = () => {
   const [user, loading] = useAuthState(auth)
@@ -17,10 +18,9 @@ const AuthButtons = () => {
           <Button
             type="button"
             variant="default"
-            onClick={
-              () => {
-                navigate('/register')
-              }}
+            onClick={() => {
+              navigate('/register')
+            }}
           >
             Register
           </Button>

@@ -4,8 +4,8 @@ interface IError {
   message?: string
 }
 
-const Error = ({ message }: IError) => {
+const ErrorComponent = ({ message }: IError) => {
   return <h1>Ooops! Something went wrong. {message ?? 'try again later'}</h1>
 }
 
-export default Error
+export default ErrorComponent

@@ -1,8 +1,9 @@
-import { Button, Input } from '@/ui'
 import React, { useEffect, useState } from 'react'
 import { ZodError, z } from 'zod'
 
 import useForm from '@/hooks/useForm'
+
+import { Button, Input } from '@/ui'
 
 const InputSchema = z.object({
   email: z.string().email('Email is not valid').optional(),

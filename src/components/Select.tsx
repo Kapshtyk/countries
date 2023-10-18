@@ -1,9 +1,10 @@
-import { Button } from '@/ui'
 import { DoubleArrowDownIcon } from '@radix-ui/react-icons'
 import React, { useState } from 'react'
 
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useKeyDown } from '@/hooks/useKeyDown'
+
+import { Button } from '@/ui'
 
 interface ISelect {
   values: string[]

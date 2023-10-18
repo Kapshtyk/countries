@@ -1,7 +1,6 @@
+import { Button } from '@/ui/button'
 import { ZoomInIcon } from '@radix-ui/react-icons'
 import React, { useEffect, useState } from 'react'
-
-import { Button } from '@/ui/button'
 
 interface IInput extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string

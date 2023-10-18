@@ -11,6 +11,7 @@ import {
 } from 'recharts'
 
 import { useGetCountriesQuery } from '@/app/services/countries/countries'
+
 import { getTotalValuesForRegion } from '@/lib/helpers/statistics'
 import { Country } from '@/lib/zod/countries'
 
@@ -19,9 +20,7 @@ interface IBarChartView {
 }
 
 const BarChartView = ({ country }: IBarChartView) => {
-  const {
-    data: countriesList = [],
-  } = useGetCountriesQuery(null)
+  const { data: countriesList = [] } = useGetCountriesQuery(null)
 
   const { totalArea, totalPopulation } = getTotalValuesForRegion(
     countriesList,
@@ -61,8 +60,7 @@ const BarChartView = ({ country }: IBarChartView) => {
             if (typeof value === 'number') {
               return formatValue(value)
             }
-          }
-          }
+          }}
         />
         <Legend />
         <Bar dataKey={country.name.common} stackId="a" fill="#6dc5ff" />

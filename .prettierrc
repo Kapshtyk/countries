@@ -9,13 +9,13 @@
   "importOrder": [
     "^@/pages/(.*)$",
     "^@/components/(.*)$",
-    "^@/ui/(.*)$",
     "^@/styles/(.*)$",
     "^@/auth/(.*)$",
     "^@/app/(.*)$",
     "^@/features/(.*)$",
     "^@/hooks/(.*)$",
     "^@/lib/(.*)$",
+    "^@/ui$",
     "^[./]"
   ],
   "importOrderSeparation": true,

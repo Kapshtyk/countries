@@ -3,10 +3,14 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Countries from '@/pages/Countries'
+import Diagrams from '@/pages/Diagrams'
+import Favourites from '@/pages/Favourites'
 import Home from '@/pages/Home'
 import Login from '@/pages/Login'
 import Register from '@/pages/Register'
 
+import CountriesSidebar from '@/components/CountriesSidebar'
+import CountriesSingle from '@/components/CountriesSingle'
 import Layout from '@/components/Layout'
 import ProtectedRoute from '@/components/ProtectedRoute'
 
@@ -17,15 +21,10 @@ import { setFavourites } from '@/features/favourites/favouritesSlice'
 
 import { useAppDispatch } from '@/hooks/redux'
 
-import CountriesSingle from './components/CountriesSingle'
-import Diagrams from './pages/Diagrams'
-import Favourites from './pages/Favourites'
-import CountriesSidebar from './components/CountriesSidebar'
-
 function App() {
   const [user] = useAuthState(auth)
   const dispatch = useAppDispatch()
-  const [trigger, result] = useLazyGetCountriesQuery()
+  const [trigger] = useLazyGetCountriesQuery()
 
   useEffect(() => {
     if (user) {
@@ -62,7 +61,6 @@ function App() {
               }
             />
           </Route>
-          {/*  </Route> */}
         </Route>
       </Routes>
     </BrowserRouter>

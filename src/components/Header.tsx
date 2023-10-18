@@ -1,5 +1,4 @@
-import { Hamburger } from '@/ui'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useSelector } from 'react-redux'
 
@@ -12,14 +11,15 @@ import { getFavourites } from '@/features/favourites/favouritesSlice'
 
 import { useClickOutside } from '@/hooks/useClickOutside'
 
+import { Hamburger } from '@/ui'
+
 const Header = () => {
   const [user, loading] = useAuthState(auth)
   const favourites = useSelector(getFavourites)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const ref = useClickOutside(() => {
     setIsMobileMenuOpen(false)
-  }
-  ) as React.RefObject<HTMLDivElement>
+  }) as React.RefObject<HTMLDivElement>
 
   const favouritesString = favourites.length ? ` (${favourites.length})` : ''
   const menuItems = [
@@ -63,8 +63,9 @@ const Header = () => {
       <Hamburger onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
       <div
         ref={ref}
-        className={`${isMobileMenuOpen ? 'flex' : 'hidden'
-          } fixed bottom-0 left-0 bg-white/90 z-40 flex flex-col items-center p-3 gap-3 justify-between h-3/6 w-full rounded-t-lg animate-mobMenu border-t `}
+        className={`${
+          isMobileMenuOpen ? 'flex' : 'hidden'
+        } fixed bottom-0 left-0 bg-white/90 z-40 flex flex-col items-center p-3 gap-3 justify-between h-3/6 w-full rounded-t-lg animate-mobMenu border-t `}
       >
         <CustomNavLink
           to="/"
