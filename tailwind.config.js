@@ -28,7 +28,8 @@ module.exports = {
         underline: 'appear 0.5s linear forwards',
         mobMenu: 'mobMenu 0.2s linear forwards',
         pingOnce: 'ping 0.5s linear forwards'
-      }
+      },
+      darkMode: 'class'
     }
   },
   plugins: [require('tailwindcss-animate')]

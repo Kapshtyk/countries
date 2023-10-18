@@ -32,11 +32,6 @@
     --neutral: rgb(63 63 70);
     --neutral-09: rgba(63, 63, 70, 0.9);
     --text-main: rgb(235, 235, 235);
-    --additional-color-100: rgb(241 245 249);
-    --additional-color-200: rgb(226 232 240);
-    --additional-color-400: rgb(148 163 184);
-    --additional-color-700: rgb(51 65 85);
-    --error-color-500: rgb(239 68 68);
   }
 
   h1 {
