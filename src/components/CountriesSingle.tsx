@@ -1,4 +1,3 @@
-import { StarFilledIcon, StarIcon } from '@radix-ui/react-icons'
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
@@ -12,15 +11,10 @@ import {
 } from '@/app/services/countries/countries'
 import { useLazyGetWeatherQuery } from '@/app/services/weather'
 
-import { getFavourites } from '@/features/favourites/favouritesSlice'
-
-import { useAppSelector } from '@/hooks/redux'
 import { useKeyDown } from '@/hooks/useKeyDown'
 
 import weatherService from '@/lib/helpers/weather'
 import { Country } from '@/lib/zod/countries'
-
-import { Button } from '@/ui'
 
 import Favourite from './Favourive'
 
@@ -225,11 +219,10 @@ const CountriesSingle = () => {
                   <ul className="font-extralight col-span-2">
                     <li>{`Temperature: ${weatherResult.data.main.temp} Celsius`}</li>
                     <li>
-                      {`Wind: ${
-                        weatherResult.data.wind.speed
-                      } mps, direction: ${weatherService.getWindDirection(
-                        weatherResult.data.wind.deg
-                      )}`}
+                      {`Wind: ${weatherResult.data.wind.speed
+                        } mps, direction: ${weatherService.getWindDirection(
+                          weatherResult.data.wind.deg
+                        )}`}
                     </li>
                     <li>
                       Clouds:{' '}
