@@ -1,7 +1,7 @@
 {
   "name": "countries_typescript",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://kapshtyk.github.io/countries_typescript",
   "dependencies": {
     "@firebase/firestore": "^4.2.0",
