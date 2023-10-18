@@ -85,15 +85,19 @@
 }
 
 h1 {
-  @apply font-semibold text-3xl my-2 text-center;
+  @apply font-semibold text-3xl my-2 mb-4 text-center;
 }
 
 h2 {
-  @apply font-normal text-2xl my-2 text-start;
+  @apply font-normal text-2xl my-2 mb-3 text-start;
+}
+
+h3 {
+  @apply font-normal text-xl my-2 mb-3 text-start;
 }
 
 p {
-  @apply text-base font-light text-start;
+  @apply text-base font-light text-start my-2;
 }
 
 .recharts-legend-item-text {
