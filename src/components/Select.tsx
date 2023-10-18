@@ -1,9 +1,9 @@
 import { Button } from '@/ui'
+import { DoubleArrowDownIcon } from '@radix-ui/react-icons'
 import React, { useState } from 'react'
 
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useKeyDown } from '@/hooks/useKeyDown'
-import { DoubleArrowDownIcon } from '@radix-ui/react-icons'
 
 interface ISelect {
   values: string[]
@@ -70,8 +70,9 @@ const Select = ({
               .sort((a, b) => a.localeCompare(b))
               .map((value) => (
                 <li
-                  className={`h-8 px-2 hover:bg-slate-200 border-b flex items-center ${selected.includes(value) && 'font-normal bg-slate-100'
-                    }`}
+                  className={`h-8 px-2 hover:bg-slate-200 border-b flex items-center ${
+                    selected.includes(value) && 'font-normal bg-slate-100'
+                  }`}
                   key={value}
                   value={value}
                   onClick={(e) => handleItemsClick(e, value)}
@@ -91,8 +92,8 @@ const Select = ({
             </Button>
           )}
           {!isListOpen && (
-            <DoubleArrowDownIcon className="absolute w-4 h-4 top-3 right-3 text-slate-400" />)
-          }
+            <DoubleArrowDownIcon className="absolute w-4 h-4 top-3 right-3 text-slate-400" />
+          )}
         </div>
       </div>
     </div>

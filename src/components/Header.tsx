@@ -66,8 +66,9 @@ const Header = () => {
         onClick={(e) => setIsMobileMenuOpen(false)}
       ></div>
       <nav
-        className={`${isMobileMenuOpen ? 'flex' : 'hidden'
-          } fixed bottom-0 left-0 bg-white/90 z-50 flex flex-col items-center p-3 gap-3 justify-between h-3/6 w-full rounded-t-lg animate-mobMenu border-t `}
+        className={`${
+          isMobileMenuOpen ? 'flex' : 'hidden'
+        } fixed bottom-0 left-0 bg-white/90 z-50 flex flex-col items-center p-3 gap-3 justify-between h-3/6 w-full rounded-t-lg animate-mobMenu border-t `}
       >
         <CustomNavLink
           to="/"

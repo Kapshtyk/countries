@@ -1,10 +1,10 @@
+import { Checkbox } from '@/ui'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
-import { useGetCountriesQuery } from '@/app/services/countries/countries'
-import ScatterComponent from '@/components/ScatterComponent'
 import AreaComponent from '@/components/AreaComponent'
-import { Checkbox } from '@/ui'
+import ScatterComponent from '@/components/ScatterComponent'
 
+import { useGetCountriesQuery } from '@/app/services/countries/countries'
 
 const Diagrams = () => {
   const { data: countriesList = [] } = useGetCountriesQuery(null)
@@ -34,7 +34,6 @@ const Diagrams = () => {
     }
   }, [regions])
 
-
   return (
     <>
       <div className="flex flex-wrap justify-center items-center">
@@ -51,8 +50,10 @@ const Diagrams = () => {
                   onClick={(e) => handleRegionChange(e, region)}
                 ></Checkbox>
               </div>
-              <label className="font-light text-sm" htmlFor={region}>{region}</label>
-            </div >
+              <label className="font-light text-sm" htmlFor={region}>
+                {region}
+              </label>
+            </div>
           </div>
         ))}
       </div>

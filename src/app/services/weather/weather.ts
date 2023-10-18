@@ -7,20 +7,27 @@ interface WeatherQueryParams {
   lon: number
 }
 
+const apiKey =
+  process.env.REACT_APP_ENV === 'test'
+    ? ''
+    : process.env.REACT_APP_OPENWEATHER_KEY
+
 export const weatherApi = createApi({
   reducerPath: 'weatherApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`
+    baseUrl: `https://api.openweathermap.org/data/2.5/`
   }),
   tagTypes: ['weather'],
   keepUnusedDataFor: 3600,
   endpoints: (builder) => ({
-    getWeather: builder.query<Weather | null, WeatherQueryParams & any>({
-      query: (coords) => `&lat=${coords.lat}&lon=${coords.lon}`,
+    getWeather: builder.query<Weather | null, WeatherQueryParams>({
+      query: (coords) =>
+        `weather?units=metric&appid=${apiKey}&lat=${coords.lat}&lon=${coords.lon}`,
       providesTags: ['weather'],
       transformResponse: (response: any): Weather | null =>
         validateAndCleanUpWeatherData(response)
     })
   })
 })
+
 export const { useGetWeatherQuery } = weatherApi

@@ -1,9 +1,14 @@
 import { Button } from '@/ui'
+import {
+  IdCardIcon,
+  LetterCaseCapitalizeIcon,
+  PersonIcon,
+  StarFilledIcon,
+  StarIcon
+} from '@radix-ui/react-icons'
 import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Link } from 'react-router-dom'
-
-import { StarIcon, StarFilledIcon, LetterCaseCapitalizeIcon, PersonIcon, IdCardIcon } from '@radix-ui/react-icons'
 
 import { auth, toggleFavourites } from '@/app/services/auth/firebase'
 
@@ -56,17 +61,26 @@ const CountryCard = ({ country }: ICountryCard) => {
         <p className="text-sm font-light">{country.name.official}</p>
         <div className="grid grid-cols-1 divide-y">
           <div className="py-2 pt-4 text-xs font-extralight flex items-center">
-            <LetterCaseCapitalizeIcon aria-description='languages' className="inline-block mr-1" />
+            <LetterCaseCapitalizeIcon
+              aria-description="languages"
+              className="inline-block mr-1"
+            />
             {Object.values(country.languages ?? {}).join(', ')}
           </div>
           <div className="py-2 text-xs font-extralight">
-            <IdCardIcon aria-description='currency' className="inline-block mr-1" />
+            <IdCardIcon
+              aria-description="currency"
+              className="inline-block mr-1"
+            />
             {Object.values(country.currencies ?? {})
               .map((currency) => currency.name)
               .join(', ')}
           </div>
           <div className="py-2 text-xs font-extralight flex items-center">
-            <PersonIcon aria-description='population' className="inline-block mr-1" />
+            <PersonIcon
+              aria-description="population"
+              className="inline-block mr-1"
+            />
             {country?.population.toLocaleString()}
           </div>
         </div>

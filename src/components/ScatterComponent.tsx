@@ -39,9 +39,7 @@ interface IScatterComnonents {
 
 const ScatterComponent = ({ regions }: IScatterComnonents) => {
   const [isMobile, setIsMobile] = useState(false)
-  const {
-    data: countriesList = [],
-  } = useGetCountriesQuery(null)
+  const { data: countriesList = [] } = useGetCountriesQuery(null)
 
   const navigate = useNavigate()
 
@@ -68,7 +66,7 @@ const ScatterComponent = ({ regions }: IScatterComnonents) => {
             left: -20
           }}
         >
-          <CartesianGrid strokeDasharray='3 3' />
+          <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             type="number"
             dataKey="area"
@@ -103,9 +101,7 @@ const ScatterComponent = ({ regions }: IScatterComnonents) => {
               }
             }}
           />
-          <Legend
-            className="text-sm"
-          />
+          <Legend className="text-sm" />
           {regions.map((region) => (
             <Scatter
               key={region}

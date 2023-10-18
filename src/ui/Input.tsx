@@ -1,7 +1,7 @@
+import { ZoomInIcon } from '@radix-ui/react-icons'
 import React, { useEffect, useState } from 'react'
 
 import { Button } from '@/ui/button'
-import { ZoomInIcon } from '@radix-ui/react-icons'
 
 interface IInput extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string
@@ -54,8 +54,9 @@ const Input = ({
           ESC
         </Button>
       )}
-      {renderIcon &&
-        <ZoomInIcon className="absolute w-5 h-5 top-3 right-3 text-slate-400" />}
+      {renderIcon && !isFocused && (
+        <ZoomInIcon className="absolute w-5 h-5 top-3 right-3 text-slate-400" />
+      )}
     </div>
   )
 }

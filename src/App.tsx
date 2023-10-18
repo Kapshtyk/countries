@@ -11,26 +11,26 @@ import Layout from '@/components/Layout'
 import ProtectedRoute from '@/components/ProtectedRoute'
 
 import { auth, getFavourites } from '@/app/services/auth/firebase'
-import { useGetCountriesQuery } from '@/app/services/countries/countries'
+import { useLazyGetCountriesQuery } from '@/app/services/countries/countries'
 
 import { setFavourites } from '@/features/favourites/favouritesSlice'
 
 import { useAppDispatch } from '@/hooks/redux'
 
-import Favourites from './pages/Favourites'
-import Diagrams from './pages/Diagrams'
 import CountriesSingle from './components/CountriesSingle'
+import Diagrams from './pages/Diagrams'
+import Favourites from './pages/Favourites'
 
 function App() {
   const [user] = useAuthState(auth)
   const dispatch = useAppDispatch()
-  const { refetch } = useGetCountriesQuery({ skip: !user })
+  const [trigger] = useLazyGetCountriesQuery()
 
   useEffect(() => {
     if (user) {
-      refetch()
+      trigger()
     }
-  }, [user, refetch])
+  }, [user, trigger])
 
   useEffect(() => {
     if (user) {
@@ -47,10 +47,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route
-            path="/diagrams"
-            element={<Diagrams />}
-          />
+          <Route path="/diagrams" element={<Diagrams />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/favourites" element={<Favourites />} />
             <Route path="/countries" element={<Countries />} />

@@ -16,6 +16,7 @@ const Home = () => {
           <a href="https://openweathermap.org/">https://openweathermap.org/</a>
         </p>
       </div>
+      <script src="https://gist.github.com/Kapshtyk/26a13a9003e4cecd9653049ec5770393.js"></script>
     </div>
   )
 }

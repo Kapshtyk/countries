@@ -19,12 +19,11 @@ const Countries = () => {
     return <div>Loading...</div>
   }
 
-  const countriesToShow = countriesList.filter((country) =>
-    (selected.includes(country.region) || selected.length === 0) &&
-    (
-      country.name.common.toLowerCase().includes(search.toLowerCase()) ||
-      country.name.official.toLowerCase().includes(search.toLowerCase())
-    )
+  const countriesToShow = countriesList.filter(
+    (country) =>
+      (selected.includes(country.region) || selected.length === 0) &&
+      (country.name.common.toLowerCase().includes(search.toLowerCase()) ||
+        country.name.official.toLowerCase().includes(search.toLowerCase()))
   )
 
   return (

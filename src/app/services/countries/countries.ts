@@ -7,15 +7,13 @@ export const countriesApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://restcountries.com/v3.1/'
   }),
-  tagTypes: ['countries'],
   endpoints: (builder) => ({
-    getCountries: builder.query<Countries, unknown>({
+    getCountries: builder.query<Countries, void>({
       query: () => 'all',
-      providesTags: ['countries'],
       transformResponse: (response: any): Countries =>
         validateAndCleanUpCountryData(response)
     })
   })
 })
 
-export const { useGetCountriesQuery } = countriesApi
+export const { useLazyGetCountriesQuery, useGetCountriesQuery } = countriesApi
