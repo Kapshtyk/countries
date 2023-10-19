@@ -10,7 +10,7 @@ interface IAuthButtons {
   onClick?: () => void
 }
 
-const AuthButtons = ({ onClick }: IAuthButtons) => {
+const AuthButtons = ({ onClick = () => {} }: IAuthButtons) => {
   const [user, loading] = useAuthState(auth)
   const location = useLocation()
   const navigate = useNavigate()
@@ -24,7 +24,7 @@ const AuthButtons = ({ onClick }: IAuthButtons) => {
             variant="default"
             onClick={() => {
               navigate('/register')
-              onClick && onClick()
+              onClick()
             }}
           >
             Register
@@ -35,7 +35,7 @@ const AuthButtons = ({ onClick }: IAuthButtons) => {
             variant="default"
             onClick={() => {
               navigate('/login')
-              onClick && onClick()
+              onClick()
             }}
           >
             Login

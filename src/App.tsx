@@ -9,7 +9,6 @@ import Home from '@/pages/Home'
 import Login from '@/pages/Login'
 import Register from '@/pages/Register'
 
-import CountriesSidebar from '@/components/CountriesSidebar'
 import CountriesSingle from '@/components/CountriesSingle'
 import Layout from '@/components/Layout'
 import ProtectedRoute from '@/components/ProtectedRoute'

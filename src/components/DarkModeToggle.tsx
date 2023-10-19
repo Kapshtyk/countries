@@ -1,11 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Switch } from '@/ui'
 
 const DarkModeToggle = () => {
-  const [theme, setTheme] = React.useState(
-    localStorage.getItem('theme') || 'light'
-  )
+  const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'light')
   const html = document.querySelector('html')
 
   const handleThemeChange = () => {

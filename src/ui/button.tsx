@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-main-400 hover:bg-main-300 active:bg-main-200  text-foreground focus:outline-main-500',
+          'bg-main-400 hover:bg-main-300 active:bg-main-200  text-background focus:outline-main-500',
         outline:
           'bg-tranparent hover:text-main-300 border-2 border-main-400	hover:border-main-300 active:text-main-200 text-main-400 focus:outline-main-500',
         mini: 'rounded-md shadow-sm text-xs text-main-300 font-normal border',
