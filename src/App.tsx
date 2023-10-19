@@ -51,15 +51,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/favourites" element={<Favourites />} />
             <Route path="/countries" element={<Countries />} />
-            <Route
-              path="/countries/:single"
-              element={
-                <>
-                  <CountriesSidebar />
-                  <CountriesSingle />
-                </>
-              }
-            />
+            <Route path="/countries/:single" element={<CountriesSingle />} />
           </Route>
         </Route>
       </Routes>

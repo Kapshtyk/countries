@@ -28,8 +28,8 @@ const CountriesSidebar = () => {
   }
 
   return (
-    <div className="hidden md:block absolute w-52 font-light text-sm bg-[var(--additional-color-100)] border-r border-[var(--additional-color-200)] overflow-y-auto shadow-sm max-h-screen-without-header left-0">
-      <div className="p-4 text-[var(--additional-color-400)] font-extralight text-xs">
+    <div className="hidden absolute md:block w-52 font-light text-sm bg-additional-100 border-r border-additional-200 overflow-y-auto shadow-sm max-h-screen left-0 top-[80px]">
+      <div className="p-4 text-additional-400 font-extralight text-xs">
         Navigation with arrow keys
       </div>
       <ul>
@@ -45,9 +45,9 @@ const CountriesSidebar = () => {
               className={`${
                 country.name.common ===
                 decodeURIComponent(location.pathname.split('/')[2])
-                  ? `bg-[var(--main-color-300)] text-[var(--neutral)] transition-all duration-300 ease-in-out shadow-sm`
+                  ? `bg-main-300 transition-all duration-300 ease-in-out shadow-sm text-background`
                   : ''
-              } p-2 m-2 rounded-md hover:cursor-pointer hover:bg-[var(--main-color-100)]`}
+              } p-2 m-2 rounded-md hover:cursor-pointer hover:bg-main-100`}
               key={country.name.common}
               onClick={() => navigate(`/countries/${country.name.common}`)}
             >

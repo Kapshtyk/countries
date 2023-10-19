@@ -100,7 +100,7 @@ export const Form = ({
         )
       })}
       {errors && (
-        <ul className="text-sm font-extralight text-[var(--error-color-500)]">
+        <ul className="text-sm font-extralight text-error-500">
           {Object.values(errors).map((error) => {
             return <li key={error}>{error}</li>
           })}

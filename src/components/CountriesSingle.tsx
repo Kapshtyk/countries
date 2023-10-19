@@ -218,10 +218,11 @@ const CountriesSingle = () => {
                   <ul className="font-extralight col-span-2">
                     <li>{`Temperature: ${weatherResult.data.main.temp} Celsius`}</li>
                     <li>
-                      {`Wind: ${weatherResult.data.wind.speed
-                        } mps, direction: ${weatherService.getWindDirection(
-                          weatherResult.data.wind.deg
-                        )}`}
+                      {`Wind: ${
+                        weatherResult.data.wind.speed
+                      } mps, direction: ${weatherService.getWindDirection(
+                        weatherResult.data.wind.deg
+                      )}`}
                     </li>
                     <li>
                       Clouds:{' '}
@@ -267,14 +268,14 @@ const CountriesSingle = () => {
       <button
         disabled={countryIndex === 0}
         onClick={() => handleNextAndPreviousClick(-1)}
-        className="md:hidden fixed w-24 bottom-5 left-4 bg-[var(--main-color-300)]/80 active:bg-[var(--main-color-500)] text-[var(--neutral)] font-light py-2 px-4 rounded disabled:opacity-50"
+        className="md:hidden fixed w-24 bottom-5 left-4 bg-main-300/80 active:bg-main-500 text-foreground font-light py-2 px-4 rounded disabled:opacity-50"
       >
         Previous
       </button>
       <button
         disabled={countryIndex === countriesList.length - 1}
         onClick={() => handleNextAndPreviousClick(1)}
-        className="md:hidden fixed w-24 bottom-5 right-4 bg-[var(--main-color-300)]/80 active:bg-[var(--main-color-500)] text-[var(--neutral)] font-light py-2 px-4 rounded disabled:opacity-50"
+        className="md:hidden fixed w-24 bottom-5 right-4 bg-main-300/80 active:bg-main-500 text-foreground font-light py-2 px-4 rounded disabled:opacity-50"
       >
         Next
       </button>

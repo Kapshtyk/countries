@@ -16,9 +16,9 @@ interface ICountryCard {
 
 const CountryCard = ({ country }: ICountryCard) => {
   return (
-    <div className="container bg-[var(--neutral)] w-full relative rounded-md shadow-md border p-3 hover:shadow-lg border-[var(--additional-color-100)] hover:border-[var(--additional-color-200)] mt-3 max-w-md transition-all duration-300 ease-in-out">
+    <div className="container bg-background w-full relative rounded-md shadow-md border p-3 hover:shadow-lg border-additional-100 hover:border-additional-200 mt-3 max-w-md transition-all duration-300 ease-in-out">
       <Link
-        className={`text-decoration-none hover:text-[var(--text-main)]`}
+        className={`text-decoration-none hover:text-text-main`}
         to={`/countries/${country.name.common}`}
         state={{ country: country }}
       >

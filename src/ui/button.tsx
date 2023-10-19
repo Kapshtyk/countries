@@ -10,14 +10,14 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-[var(--main-color-400)] hover:bg-[var(--main-color-300)] active:bg-[var(--main-color-200)]  text-[var(--neutral)] focus:outline-[var(--main-color-500)]',
+          'bg-main-400 hover:bg-main-300 active:bg-main-200  text-foreground focus:outline-main-500',
         outline:
-          'bg-[var(--neutral)] hover:text-[var(--main-color-300)] border-2 border-[var(--main-color-400)]	hover:border-[var(--main-color-300)] active:text-[var(--main-color-200)] text-[var(--main-color-400)] focus:outline-[var(--main-color-500)]',
-        mini: 'rounded-md shadow-sm text-xs text-[var(--main-color-300)] font-normal border',
-        blank: 'text-xs text-[var(--main-color-300)] font-normal'
+          'bg-tranparent hover:text-main-300 border-2 border-main-400	hover:border-main-300 active:text-main-200 text-main-400 focus:outline-main-500',
+        mini: 'rounded-md shadow-sm text-xs text-main-300 font-normal border',
+        blank: 'text-xs text-main-300 font-normal'
       },
       size: {
-        default: 'w-36 h-9 my-3',
+        default: 'w-36 h-9 my-1',
         mini: 'w-6 h-6 my-0 '
       }
     },

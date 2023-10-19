@@ -48,7 +48,7 @@ const Register = () => {
       <div>
         <p className="font-extralight">
           Already have an account?{' '}
-          <Link className="text-[var(--main-color-400)]" to="/login">
+          <Link className="text-main-400" to="/login">
             Login
           </Link>
         </p>

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -29,7 +30,25 @@ module.exports = {
         mobMenu: 'mobMenu 0.2s linear forwards',
         pingOnce: 'ping 0.5s linear forwards'
       },
-      darkMode: 'class'
+      colors: {
+        main: {
+          100: 'rgb(var(--main-color-100) / <alpha-value>)',
+          200: 'rgb(var(--main-color-200) / <alpha-value>)',
+          300: 'rgb(var(--main-color-300) / <alpha-value>)',
+          400: 'rgb(var(--main-color-400) / <alpha-value>)',
+          500: 'rgb(var(--main-color-500) / <alpha-value>)'
+        },
+        background: 'rgb(var(--background) / <alpha-value>)',
+        foreground: 'rgb(var(--foreground) / <alpha-value>)',
+        additional: {
+          100: 'rgb(var(--additional-color-100) / <alpha-value>)',
+          200: 'rgb(var(--additional-color-200) / <alpha-value>)',
+          400: 'rgb(var(--additional-color-400) / <alpha-value>)'
+        },
+        error: {
+          500: 'rgb(var(--error-color-500)'
+        }
+      }
     }
   },
   plugins: [require('tailwindcss-animate')]

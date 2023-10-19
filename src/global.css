@@ -4,34 +4,30 @@
 
 @layer base {
   :root {
-    --main-color-100: rgb(224 242 254);
-    --main-color-100-03: rgba(224, 242, 254, 0.3);
-    --main-color-200: rgb(186 230 253);
-    --main-color-200-03: rgba(186, 230, 253, 0.3);
-    --main-color-300: rgb(125 211 252);
-    --main-color-400: rgb(56 189 248);
-    --main-color-500: rgb(14 165 233);
-    --neutral: rgb(255, 255, 255);
-    --neutral-09: rgba(255, 255, 255, 0.9);
-    --text-main: #0f172a;
-    --additional-color-100: rgb(241 245 249);
-    --additional-color-200: rgb(226 232 240);
-    --additional-color-400: rgb(148 163 184);
-    --additional-color-700: rgb(51 65 85);
-    --error-color-500: rgb(239 68 68);
+    --main-color-100: 224 242 254;
+    --main-color-200: 186 230 253;
+    --main-color-300: 125 211 252;
+    --main-color-400: 56 189 248;
+    --main-color-500: 14 165 233;
+    --background: 255 255 255;
+    --foreground: 15 23 42;
+    --additional-color-100: 241 245 249;
+    --additional-color-200: 226 232 240;
+    --additional-color-400: 148 163 184;
+    --error-color-500: 239 68 68;
   }
 
   .dark {
-    --main-color-100: rgb(244 244 245);
-    --main-color-100-03: rgba(244, 244, 245, 0.3);
-    --main-color-200: rgb(228 228 231);
-    --main-color-200-03: rgba(228, 228, 231, 0.3);
-    --main-color-300: rgb(212 212 216);
-    --main-color-400: rgb(161 161 170);
-    --main-color-500: rgb(113 113 122);
-    --neutral: rgb(63 63 70);
-    --neutral-09: rgba(63, 63, 70, 0.9);
-    --text-main: rgb(235, 235, 235);
+    --main-color-100: 244 244 245;
+    --main-color-200: 228 228 231;
+    --main-color-300: 212 212 216;
+    --main-color-400: 161 161 170;
+    --main-color-500: 113 113 122;
+    --background: 72 72 72;
+    --foreground: 235 235 235;
+    --additional-color-100: 95 95 95;
+    --additional-color-200: 145 145 145;
+    --additional-color-400: 226 232 240;
   }
 
   h1 {
@@ -51,16 +47,16 @@
   }
 
   body {
-    @apply bg-[var(--neutral)] text-[var(--text-main)] font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased;
   }
 }
 
 #root {
-  @apply h-screen bg-gradient-to-b from-[var(--main-color-200-03)] from-0% via-[var(--main-color-100-03)] via-20% to-[var(--neutral)] to-50%;
+  @apply h-screen bg-gradient-to-b from-main-200/30 from-0% via-main-100/30 via-20% to-background to-50%;
 }
 
 .active::after {
-  @apply h-[4px] absolute bg-gradient-to-r from-[var(--main-color-200)] to-[var(--main-color-400)] to-100% bottom-[-2px] left-0 animate-underline;
+  @apply h-[4px] absolute bg-gradient-to-r from-main-200 to-main-400 to-100% bottom-[-2px] left-0 animate-underline;
   content: '';
 }
 
@@ -77,9 +73,9 @@
 }
 
 .recharts-text {
-  @apply fill-[var(--text-main)];
+  @apply fill-foreground;
 }
 
 .recharts-cartesian-axis-line {
-  @apply stroke-[var(--main-color-400)];
+  @apply stroke-main-400;
 }
