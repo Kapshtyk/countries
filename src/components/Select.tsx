@@ -46,7 +46,7 @@ const Select = ({
     setIsListOpen(false)
   ) as React.RefObject<HTMLUListElement>
 
-  const styleIfListOpen = isListOpen ? 'outline outline-sky-300 outline-2' : ''
+  const styleIfListOpen = isListOpen ? 'outline outline-[var(--main-color-300)] outline-2' : ''
 
   return (
     <div className="w-full max-w-md sm:max-w-sm self-center">
@@ -55,7 +55,7 @@ const Select = ({
           {placeholder}
         </label>
         <div
-          className={`relative h-10 bg-white text-sm text-slate-400 font-light p-2 w-full border border-sky-200 rounded-md focus:outline-sky-300 focus:outline-2 ${styleIfListOpen}`}
+          className={`relative h-10 bg-[var(--neutral)] text-sm text-[var(--additional-color-400)] font-light p-2 w-full border border-[var(--main-color-200)] rounded-md focus:outline-[var(--main-color-300)] focus:outline-2 ${styleIfListOpen}`}
           tabIndex={10}
           id={id}
           {...rest}
@@ -64,16 +64,15 @@ const Select = ({
           {selected.length === 0 ? placeholder : selected.join(', ')}
           <ul
             ref={ref}
-            className="absolute top-[41px] py-2 left-0 w-full max-w-md sm:max-w-sm px-4 bg-white border border-gray-300 rounded-md shadow-lg z-50"
+            className="absolute top-[41px] py-2 left-0 w-full max-w-md sm:max-w-sm px-4 bg-[var(--neutral)] border border-[var(--additional-color-200)] rounded-md shadow-lg z-50"
             style={{ display: isListOpen ? 'block' : 'none' }}
           >
             {values
               .sort((a, b) => a.localeCompare(b))
               .map((value) => (
                 <li
-                  className={`h-8 px-2 hover:bg-slate-200 border-b flex items-center ${
-                    selected.includes(value) && 'font-normal bg-slate-100'
-                  }`}
+                  className={`h-8 px-2 hover:bg-[var(--additional-color-200)] border-b flex items-center ${selected.includes(value) && 'font-normal bg-[var(--additional-color-100)]'
+                    }`}
                   key={value}
                   value={value}
                   onClick={(e) => handleItemsClick(e, value)}
@@ -93,7 +92,7 @@ const Select = ({
             </Button>
           )}
           {!isListOpen && (
-            <DoubleArrowDownIcon className="absolute w-4 h-4 top-3 right-3 text-slate-400" />
+            <DoubleArrowDownIcon className="absolute w-4 h-4 top-3 right-3 text-[var(--additional-color-400)]" />
           )}
         </div>
       </div>

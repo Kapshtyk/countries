@@ -39,7 +39,7 @@ const Login = () => {
       <div>
         <p className="font-extralight">
           Don't have an account?{' '}
-          <Link className="text-sky-400" to="/register">
+          <Link className="text-[var(--main-color-400)]" to="/register">
             Register
           </Link>
         </p>

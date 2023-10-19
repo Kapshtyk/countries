@@ -50,7 +50,7 @@ const Favourite = ({ country, top, right }: IFavourite) => {
     <Button
       variant="blank"
       size="mini"
-      className={`absolute top-${top} right-${right} hover:text-sky-500 active:animate-pingOnce z-40 transition-all duration-300 ease-in-out`}
+      className={`absolute top-${top} right-${right} hover:text-[var(--main-color-500)] active:animate-pingOnce z-40 transition-all duration-300 ease-in-out`}
       onClick={(e) => handleClickFavourites(e)}
     >
       {isFavourite ? <StarFilledIcon /> : <StarIcon />}

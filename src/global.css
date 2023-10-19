@@ -3,101 +3,70 @@
 @tailwind utilities;
 
 @layer base {
-  /*  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+  :root {
+    --main-color-100: rgb(224 242 254);
+    --main-color-100-03: rgba(224, 242, 254, 0.3);
+    --main-color-200: rgb(186 230 253);
+    --main-color-200-03: rgba(186, 230, 253, 0.3);
+    --main-color-300: rgb(125 211 252);
+    --main-color-400: rgb(56 189 248);
+    --main-color-500: rgb(14 165 233);   
+    --neutral: rgb(255, 255, 255);
+    --neutral-09: rgba(255, 255, 255, 0.9); 
+    --text-main: #0f172a;
+    --additional-color-100: rgb(241 245 249);
+    --additional-color-200: rgb(226 232 240);
+    --additional-color-400: rgb(148 163 184);
+    --additional-color-700: rgb(51 65 85);
+    --error-color-500: rgb(239 68 68);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --main-color-100: rgb(244 244 245);
+    --main-color-100-03: rgba(244, 244, 245, 0.3);
+    --main-color-200: rgb(228 228 231);
+    --main-color-200-03: rgba(228, 228, 231, 0.3);
+    --main-color-300: rgb(212 212 216);
+    --main-color-400: rgb(161 161 170);
+    --main-color-500: rgb(113 113 122);   
+    --neutral: rgb(63 63 70);
+    --neutral-09: rgba(63, 63, 70, 0.9); 
+    --text-main: rgb(235, 235, 235);
+    --additional-color-100: rgb(241 245 249);
+    --additional-color-200: rgb(226 232 240);
+    --additional-color-400: rgb(148 163 184);
+    --additional-color-700: rgb(51 65 85);
+    --error-color-500: rgb(239 68 68);
+  }
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+  h1 {
+    @apply font-semibold text-3xl my-2 mb-4 text-center;
+  }
+  
+  h2 {
+    @apply font-normal text-2xl my-2 mb-3 text-start;
+  }
+  
+  h3 {
+    @apply font-normal text-xl my-2 mb-3 text-start;
+  }
+  
+  p {
+    @apply text-base font-light text-start my-2;
+  }
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  } */
+  body {
+    @apply bg-[var(--neutral)] text-[var(--text-main)] font-sans antialiased;
+  }
 }
 
-/* @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-} */
-
 #root {
-  @apply h-screen bg-gradient-to-b from-sky-200/30 from-0% via-sky-100/30 via-20% to-white to-50%;
+  @apply h-screen bg-gradient-to-b from-[var(--main-color-200-03)] from-0% via-[var(--main-color-100-03)] via-20% to-[var(--neutral)] to-50%;
 }
 
 .active::after {
-  @apply h-[4px] absolute bg-gradient-to-r from-sky-200 to-sky-400 to-100% bottom-[-2px] left-0 animate-underline;
+  @apply h-[4px] absolute bg-gradient-to-r from-[var(--main-color-200)] to-[var(--main-color-400)] to-100% bottom-[-2px] left-0 animate-underline;
   content: '';
-}
-
-h1 {
-  @apply font-semibold text-3xl my-2 mb-4 text-center;
-}
-
-h2 {
-  @apply font-normal text-2xl my-2 mb-3 text-start;
-}
-
-h3 {
-  @apply font-normal text-xl my-2 mb-3 text-start;
-}
-
-p {
-  @apply text-base font-light text-start my-2;
 }
 
 .recharts-legend-item-text {
@@ -110,4 +79,12 @@ p {
 
 .recharts-legend-item {
   @apply w-3/12 sm:w-auto flex gap-4 items-start justify-start;
+}
+
+.recharts-text {
+  @apply fill-[var(--text-main)];
+}
+
+.recharts-cartesian-axis-line {
+  @apply stroke-[var(--main-color-400)];
 }

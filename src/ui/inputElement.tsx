@@ -33,7 +33,7 @@ const InputElement = ({
         {placeholder}
       </label>
       <input
-        className="relative placeholder:text-slate-400 placeholder:text-sm w-full font-light p-2 h-10 border border-sky-200 rounded-md focus:!outline-sky-300 focus:outline-2"
+        className="relative placeholder:text-[var(--additional-color-400)] bg-[var(--neutral)] placeholder:text-sm w-full font-light p-2 h-10 border border-[var(--main-color-200)] rounded-md focus:!outline-[var(--main-color-300)] focus:outline-2"
         id={id}
         {...rest}
         placeholder={isFocused ? '' : placeholder}
@@ -54,7 +54,7 @@ const InputElement = ({
         </Button>
       )}
       {renderIcon && !isFocused && (
-        <ZoomInIcon className="absolute w-5 h-5 top-3 right-3 text-slate-400" />
+        <ZoomInIcon className="absolute w-5 h-5 top-3 right-3 text-[var(--additional-color-400)]" />
       )}
     </div>
   )

@@ -1,4 +1,4 @@
-import { Countries } from '../zod/countries'
+import { Countries } from '@/lib/zod/countries'
 
 export const getTotalValuesForRegion = (
   countries: Countries,

@@ -15,9 +15,9 @@ const CustomNavLink = ({
   onClick
 }: ICustomNavLink) => {
   const variant = {
-    wide: 'text-xl relative h-full flex items-center border-b-2 border-b-transparent text-slate-700',
+    wide: 'text-xl relative h-full flex items-center border-b-2 border-b-transparent',
     mobile:
-      'text-xl relative h-[40px] w-[150px] flex items-center justify-center border-b-2 border-b-transparent text-slate-700'
+      'text-xl relative h-[40px] w-[150px] flex items-center justify-center border-b-2 border-b-transparent'
   }
   return (
     <NavLink

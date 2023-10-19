@@ -6,7 +6,11 @@ import { auth, logout } from '@/app/services/auth/firebase'
 
 import { Button } from '@/ui'
 
-const AuthButtons = () => {
+interface IAuthButtons {
+  onClick?: () => void
+}
+
+const AuthButtons = ({ onClick }: IAuthButtons) => {
   const [user, loading] = useAuthState(auth)
   const location = useLocation()
   const navigate = useNavigate()
@@ -20,6 +24,7 @@ const AuthButtons = () => {
             variant="default"
             onClick={() => {
               navigate('/register')
+              onClick && onClick()
             }}
           >
             Register
@@ -28,7 +33,10 @@ const AuthButtons = () => {
           <Button
             type="button"
             variant="default"
-            onClick={() => navigate('/login')}
+            onClick={() => {
+              navigate('/login')
+              onClick && onClick()
+            }}
           >
             Login
           </Button>

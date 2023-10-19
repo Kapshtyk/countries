@@ -38,7 +38,7 @@ const Header = () => {
   ]
 
   return (
-    <header className="w-full flex justify-between items-center h-20 z-50 px-3 sm:px-8 border-b border-slate-200 shadow-sm">
+    <header className="w-full text-[var(--text-main)] flex justify-between items-center h-20 z-50 px-3 sm:px-8 border-b border-[var(--additional-color-200)] shadow-sm">
       <nav className="hidden sm:flex container font-light items-center gap-6 justify-start h-full w-full">
         <CustomNavLink to="/" label="Home" />
         {!loading && user && (
@@ -63,9 +63,8 @@ const Header = () => {
       <Hamburger onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
       <div
         ref={ref}
-        className={`${
-          isMobileMenuOpen ? 'flex' : 'hidden'
-        } fixed bottom-0 left-0 bg-white/90 z-40 flex flex-col items-center p-3 gap-3 justify-between h-3/6 w-full rounded-t-lg animate-mobMenu border-t `}
+        className={`${isMobileMenuOpen ? 'flex' : 'hidden'
+          } fixed bottom-0 left-0 bg-[var(--neutral-09)] z-40 flex flex-col items-center p-3 gap-3 justify-between h-3/6 w-full rounded-t-lg animate-mobMenu border-t `}
       >
         <CustomNavLink
           to="/"
@@ -86,7 +85,7 @@ const Header = () => {
             ))}
           </>
         )}
-        <AuthButtons />
+        <AuthButtons onClick={() => setIsMobileMenuOpen(false)} />
       </div>
     </header>
   )
