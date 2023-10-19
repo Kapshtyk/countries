@@ -10,9 +10,9 @@
     --main-color-200-03: rgba(186, 230, 253, 0.3);
     --main-color-300: rgb(125 211 252);
     --main-color-400: rgb(56 189 248);
-    --main-color-500: rgb(14 165 233);   
+    --main-color-500: rgb(14 165 233);
     --neutral: rgb(255, 255, 255);
-    --neutral-09: rgba(255, 255, 255, 0.9); 
+    --neutral-09: rgba(255, 255, 255, 0.9);
     --text-main: #0f172a;
     --additional-color-100: rgb(241 245 249);
     --additional-color-200: rgb(226 232 240);
@@ -28,9 +28,9 @@
     --main-color-200-03: rgba(228, 228, 231, 0.3);
     --main-color-300: rgb(212 212 216);
     --main-color-400: rgb(161 161 170);
-    --main-color-500: rgb(113 113 122);   
+    --main-color-500: rgb(113 113 122);
     --neutral: rgb(63 63 70);
-    --neutral-09: rgba(63, 63, 70, 0.9); 
+    --neutral-09: rgba(63, 63, 70, 0.9);
     --text-main: rgb(235, 235, 235);
     --additional-color-100: rgb(241 245 249);
     --additional-color-200: rgb(226 232 240);
@@ -42,15 +42,15 @@
   h1 {
     @apply font-semibold text-3xl my-2 mb-4 text-center;
   }
-  
+
   h2 {
     @apply font-normal text-2xl my-2 mb-3 text-start;
   }
-  
+
   h3 {
     @apply font-normal text-xl my-2 mb-3 text-start;
   }
-  
+
   p {
     @apply text-base font-light text-start my-2;
   }

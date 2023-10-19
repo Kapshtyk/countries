@@ -63,8 +63,9 @@ const Header = () => {
       <Hamburger onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
       <div
         ref={ref}
-        className={`${isMobileMenuOpen ? 'flex' : 'hidden'
-          } fixed bottom-0 left-0 bg-[var(--neutral-09)] z-40 flex flex-col items-center p-3 gap-3 justify-between h-3/6 w-full rounded-t-lg animate-mobMenu border-t `}
+        className={`${
+          isMobileMenuOpen ? 'flex' : 'hidden'
+        } fixed bottom-0 left-0 bg-[var(--neutral-09)] z-40 flex flex-col items-center p-3 gap-3 justify-between h-3/6 w-full rounded-t-lg animate-mobMenu border-t `}
       >
         <CustomNavLink
           to="/"

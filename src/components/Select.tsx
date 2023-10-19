@@ -46,7 +46,9 @@ const Select = ({
     setIsListOpen(false)
   ) as React.RefObject<HTMLUListElement>
 
-  const styleIfListOpen = isListOpen ? 'outline outline-[var(--main-color-300)] outline-2' : ''
+  const styleIfListOpen = isListOpen
+    ? 'outline outline-[var(--main-color-300)] outline-2'
+    : ''
 
   return (
     <div className="w-full max-w-md sm:max-w-sm self-center">
@@ -71,8 +73,10 @@ const Select = ({
               .sort((a, b) => a.localeCompare(b))
               .map((value) => (
                 <li
-                  className={`h-8 px-2 hover:bg-[var(--additional-color-200)] border-b flex items-center ${selected.includes(value) && 'font-normal bg-[var(--additional-color-100)]'
-                    }`}
+                  className={`h-8 px-2 hover:bg-[var(--additional-color-200)] border-b flex items-center ${
+                    selected.includes(value) &&
+                    'font-normal bg-[var(--additional-color-100)]'
+                  }`}
                   key={value}
                   value={value}
                   onClick={(e) => handleItemsClick(e, value)}

@@ -219,10 +219,11 @@ const CountriesSingle = () => {
                   <ul className="font-extralight col-span-2">
                     <li>{`Temperature: ${weatherResult.data.main.temp} Celsius`}</li>
                     <li>
-                      {`Wind: ${weatherResult.data.wind.speed
-                        } mps, direction: ${weatherService.getWindDirection(
-                          weatherResult.data.wind.deg
-                        )}`}
+                      {`Wind: ${
+                        weatherResult.data.wind.speed
+                      } mps, direction: ${weatherService.getWindDirection(
+                        weatherResult.data.wind.deg
+                      )}`}
                     </li>
                     <li>
                       Clouds:{' '}
