@@ -6,9 +6,9 @@ import {
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { Country } from '@/lib/zod/countries'
+import Favourite from '@/components/Favourite'
 
-import Favourite from './Favourive'
+import { Country } from '@/lib/zod/countries'
 
 interface ICountryCard {
   country: Country

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import BarChartView from '@/components/BarChartView'
 import ErrorComponent from '@/components/ErrorComponent'
+import Favourite from '@/components/Favourite'
 import MapComponent from '@/components/MapComponent'
 
 import {
@@ -15,8 +16,6 @@ import { useKeyDown } from '@/hooks/useKeyDown'
 
 import weatherService from '@/lib/helpers/weather'
 import { Country } from '@/lib/zod/countries'
-
-import Favourite from './Favourive'
 
 const CountriesSingle = () => {
   const countryName = decodeURI(useLocation().pathname.split('/')[2])
@@ -219,11 +218,10 @@ const CountriesSingle = () => {
                   <ul className="font-extralight col-span-2">
                     <li>{`Temperature: ${weatherResult.data.main.temp} Celsius`}</li>
                     <li>
-                      {`Wind: ${
-                        weatherResult.data.wind.speed
-                      } mps, direction: ${weatherService.getWindDirection(
-                        weatherResult.data.wind.deg
-                      )}`}
+                      {`Wind: ${weatherResult.data.wind.speed
+                        } mps, direction: ${weatherService.getWindDirection(
+                          weatherResult.data.wind.deg
+                        )}`}
                     </li>
                     <li>
                       Clouds:{' '}
