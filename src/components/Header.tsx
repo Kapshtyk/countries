@@ -42,7 +42,7 @@ const Header = () => {
     }
   ]
 
-  const isCountryDetailPage = /^\/countries\/\w+/.test(pathname)
+  const isCountryDetailPage = /^\/countries\/.+/u.test(pathname);
 
   return (
     <header className="w-full sticky top-0 left-0 bg-additional-100/95 text-text-main flex justify-between items-center h-20 z-50 px-3 sm:px-8 border-b border-additional-200 shadow-sm">
@@ -71,9 +71,8 @@ const Header = () => {
       <Hamburger onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
       <div
         ref={ref}
-        className={`${
-          isMobileMenuOpen ? 'flex' : 'hidden'
-        } fixed bottom-0 left-0 bg-background/90 z-40 flex flex-col items-center p-3 gap-3 justify-between h-3/6 w-full rounded-t-lg animate-mobMenu border-t `}
+        className={`${isMobileMenuOpen ? 'flex' : 'hidden'
+          } fixed bottom-0 left-0 bg-background/90 z-40 flex flex-col items-center p-3 gap-3 justify-between h-3/6 w-full rounded-t-lg animate-mobMenu border-t `}
       >
         <CustomNavLink
           to="/"
