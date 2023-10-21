@@ -2,9 +2,9 @@
 import countriesList from '../fixtures/countries.json'
 
 const credentials = {
-  email: 'testuser@gmail.com',
-  name: 'testuser',
-  password: 'testpassword!!!111A'
+  email: Cypress.env('CYPRESS_APP_TEST_EMAIL'),
+  name: Cypress.env('CYPRESS_APP_TEST_NAME'),
+  password: Cypress.env('CYPRESS_APP_TEST_PASSWORD')
 }
 
 const privatePages = [

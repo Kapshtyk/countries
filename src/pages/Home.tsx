@@ -21,31 +21,31 @@ const Home = () => {
         <p>
           You can find my profiles on LinkedIn and GitHub for more details about
           my experience and the projects I've worked on:
-          <ul>
-            <li>
-              <a
-                className="border my-2 rounded-md p-1 w-44 flex gap-2 justify-between items-center hover:shadow-md transition-shadow duration-300 ease-in-out"
-                href="https://www.linkedin.com/in/kapshtyk/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                My LinkedIn profile
-                <LinkedInLogoIcon className="inline-block" />
-              </a>
-            </li>
-            <li>
-              <a
-                className="border rounded-md my-2 p-1 w-44 flex gap-2 justify-between items-center hover:shadow-md transition-shadow duration-300 ease-in-out"
-                href="https://github.com/Kapshtyk"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                My GitHub profile
-                <GitHubLogoIcon className="inline-block" />
-              </a>
-            </li>
-          </ul>
         </p>
+        <ul>
+          <li>
+            <a
+              className="border my-2 rounded-md p-1 w-44 flex gap-2 justify-between items-center hover:shadow-md transition-shadow duration-300 ease-in-out"
+              href="https://www.linkedin.com/in/kapshtyk/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              My LinkedIn profile
+              <LinkedInLogoIcon className="inline-block" />
+            </a>
+          </li>
+          <li>
+            <a
+              className="border rounded-md my-2 p-1 w-44 flex gap-2 justify-between items-center hover:shadow-md transition-shadow duration-300 ease-in-out"
+              href="https://github.com/Kapshtyk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              My GitHub profile
+              <GitHubLogoIcon className="inline-block" />
+            </a>
+          </li>
+        </ul>
       </section>
       <section>
         <h2 className="mt-4">About the project</h2>
