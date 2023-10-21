@@ -3,8 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import { useGetCountriesQuery } from '@/app/services/countries/countries'
 
-import { getRegionColor } from '@/lib/helpers/regionColors'
-
 const CountriesSidebar = () => {
   const location = useLocation()
   const navigate = useNavigate()

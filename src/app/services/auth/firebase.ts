@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 import { initializeApp } from 'firebase/app'
 import {
   User,
@@ -16,12 +17,20 @@ import {
 } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAvUNynHkOr1Ubrd2WcR0hspWU372MVXCs',
-  authDomain: 'countries-78568.firebaseapp.com',
-  projectId: 'countries-78568',
-  storageBucket: 'countries-78568.appspot.com',
-  messagingSenderId: '591877595402',
-  appId: '1:591877595402:web:e0aa91cb71f165adb01af3'
+  apiKey:
+    process.env.REACT_APP_GOOGLE_API_KEY ||
+    Cypress.env('CYPRESS_APP_GOOGLE_API_KEY'),
+  authDomain:
+    process.env.REACT_APP_AUTH_DOMAIN || Cypress.env('CYPRESS_APP_AUTH_DOMAIN'),
+  projectId:
+    process.env.REACT_APP_PROJECT_ID || Cypress.env('CYPRESS_APP_PROJECT_ID'),
+  storageBucket:
+    process.env.REACT_APP_STORAGE_BUCKET ||
+    Cypress.env('CYPRESS_APP_STORAGE_BUCKET'),
+  messagingSenderId:
+    process.env.REACT_APP_MESSAGING_SENDER_ID ||
+    Cypress.env('CYPRESS_APP_MESSAGING_SENDER_ID'),
+  appId: process.env.REACT_APP_APP_ID || Cypress.env('CYPRESS_APP_APP_ID')
 }
 
 const app = initializeApp(firebaseConfig)

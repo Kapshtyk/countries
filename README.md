@@ -8,16 +8,16 @@ Countries App is a simple web application built with React. It allows users to e
 
 ## Table of Contents
 
-- [Features](https://github.com/Kapshtyk/countries_typescrirpt/edit/master/README.md#features)
-- [Technologies used](https://github.com/Kapshtyk/countries_typescrirpt/edit/master/README.md#technologies-used)
-- [Getting Started](https://github.com/Kapshtyk/countries_typescrirpt/edit/master/README.md#getting-started)
-- [Usage](https://github.com/Kapshtyk/countries_typescrirpt/edit/master/README.md#usage)
-- [Code Examples](https://github.com/Kapshtyk/countries_typescrirpt/edit/master/README.md#code-examples)
+- [Features](#features)
+- [Technologies used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Code Examples](#code-examples)
 - [Credits](#credits)
 - [Screenshots](#screenshots)
 - [Author](#author)
-- [Contributing](https://github.com/Kapshtyk/countries_typescrirpt/edit/master/README.md#contributing)
-- [License](https://github.com/Kapshtyk/countries_typescrirpt/edit/master/README.md#license)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 
@@ -53,25 +53,34 @@ To get a copy of the project up and running on your local machine, follow these 
 - [Node.js](https://nodejs.org/) - Make sure you have Node.js installed.
 
 > [!IMPORTANT]
-> You should get your API keys for the Google Firebase and Open Weather Map APIs and place them in the .env file (you can use .env.example as a reference). You should also replace the Firebase configuration in `src/app/services/auth/firebase.ts` with your own credentials you received from Google. The current configuration will probably work, but these credentials can be revoked at any time.
+> You should get your API keys and other credentials for the Google Firebase and Open Weather Map APIs and place them in the .env file (you can use .env.example as a reference). The configuration from the .env.example will probably work, but these credentials can be revoked at any time.
+> If you want to run Cypress tests, you will also need to create an .env.local.json file (the same, you can use the .env.local.json.example file).
+
 
 ### Installation
 
 1. Clone this repository:
+
 ```
 git clone https://github.com/Kapshtyk/countries_typescript.git
 ```
+
 2. Navigate to the project directory:
+
 ```
 cd countries_typescript
 ```
+
 3. Install the required dependencies:
+
 ```
 npm install
 ```
+
 ## Usage
 
 - To start the development server, run:
+
 ```
 npm start
 ```
@@ -79,8 +88,11 @@ npm start
 - Open your web browser and go to [http://localhost:3000](http://localhost:3000) to access the application.
 
 ## Code examples:
+
 ### Zod:
+
 - Creation of the schema and types with the help of Zod:
+
 ```JavaScript
 import { ZodError, z } from 'zod'
 
@@ -120,7 +132,9 @@ const CountriesSchema = z.array(CountrySchema)
 export type Country = z.infer<typeof CountrySchema>
 export type Countries = z.infer<typeof CountriesSchema>
 ```
+
 - Use Zod to create the runtime validation function:
+
 ```JavaScript
 export default function validateAndCleanUpCountryData(data: any): Countries {
   try {
@@ -149,7 +163,9 @@ export default function validateAndCleanUpCountryData(data: any): Countries {
   }
 }
 ```
+
 - Use the above function to validate the response at runtime within the RTK Query:
+
 ```JavaScript
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
@@ -171,12 +187,15 @@ export const countriesApi = createApi({
 
 export const { useLazyGetCountriesQuery, useGetCountriesQuery } = countriesApi
 ```
-As a result, you can rely on types not only during development, but also during runtime. Zod will check every response, and if the structure of the API has been changed, or new countries with different fileds structure have been added, Zod will notify you and prevent your program from breaking. 
+
+As a result, you can rely on types not only during development, but also during runtime. Zod will check every response, and if the structure of the API has been changed, or new countries with different fileds structure have been added, Zod will notify you and prevent your program from breaking.
 
 Also it helps us to delete the redundant fileds from the store, as only metnioned in the schema fileds will be present in the output of the `validateAndCleanUpCountryData` function.
 
 ### Cypress
+
 - Use Cypress to test the application for unauthorised users:
+
 ```JavaScript
 describe('Countries app for the unauthorised user', () => {
   beforeEach(function () {
@@ -242,7 +261,9 @@ describe('Countries app for the unauthorised user', () => {
   })
 })
 ```
+
 - Test the application for authorised users:
+
 ```JavaScript
 describe('Countries app for the authorised user', () => {
   beforeEach(function () {
@@ -325,7 +346,9 @@ describe('Countries app for the authorised user', () => {
   })
 })
 ```
+
 - Test the dark mode:
+
 ```JavaScript
 describe('dark mode', () => {
   it('dark mode can be toggled', function () {
@@ -341,18 +364,34 @@ describe('dark mode', () => {
   })
 })
 ```
-As a result, I am confident that all my secure routes are working as they should, users cannot access secure pages without authentication, users can login and register using the appropriate forms, users can open any country page in the API as of 20 October 2023, and the dark mode switch is working. 
+
+As a result, I am confident that all my secure routes are working as they should, users cannot access secure pages without authentication, users can login and register using the appropriate forms, users can open any country page in the API as of 20 October 2023, and the dark mode switch is working.
+
+![cypress screenshot](https://github.com/Kapshtak/countries_typescript/blob/main/screenshots/cypress.jpeg)
 
 It has also been possible to verify that form validation is working correctly.
+
+You can run tests in the browser:
+```
+ npm run cypress:open
+```
+or in the headless mode:
+```
+npm run test:e2e
+``````
 
 ## Credits
 
 - Thanks to the developers of the technologies used to create this project for their valuable contributions to the web development community.
 - Special thanks to [Martin Holland](https://github.com/martin-holland) for coming up with the idea for this project and teaching us how to do it.
 
-## Screenshot
+## Screenshots
 
-TBD
+![full-screen-light-countries](https://github.com/Kapshtak/countries_typescript/blob/main/screenshots/full-screen-light-countries.png)
+![full-screen-light-diagrams](https://github.com/Kapshtak/countries_typescript/blob/main/screenshots/full-screen-light-diagrams.png)
+![full-screen-dark-country](https://github.com/Kapshtak/countries_typescript/blob/main/screenshots/full-screen-dark-country.png)
+![mobile-dark-country](https://github.com/Kapshtak/countries_typescript/blob/main/screenshots/mobile-dark-country.png)
+![full-screen-light-country](https://github.com/Kapshtak/countries_typescript/blob/main/screenshots/full-screen-light-country.png)
 
 ## Author
 
