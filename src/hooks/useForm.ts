@@ -13,9 +13,19 @@ export default function useForm(initialValues: { [key: string]: string }) {
     setIsFormTouched(true)
   }
 
+  const resetForm = () => {
+    setValues(initialValues)
+    setIsFormTouched(false)
+    const form = document.querySelector('form')
+    if (form) {
+      form.reset()
+    }
+  }
+
   return {
     values,
     handleChange,
-    isFormTouched
+    isFormTouched,
+    resetForm
   }
 }

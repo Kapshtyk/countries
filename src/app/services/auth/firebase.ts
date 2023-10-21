@@ -19,18 +19,26 @@ import {
 const firebaseConfig = {
   apiKey:
     process.env.REACT_APP_GOOGLE_API_KEY ||
-    Cypress.env('CYPRESS_APP_GOOGLE_API_KEY'),
+    (process.env.REACT_APP_ENV === 'test' &&
+      Cypress.env('CYPRESS_APP_GOOGLE_API_KEY')),
   authDomain:
-    process.env.REACT_APP_AUTH_DOMAIN || Cypress.env('CYPRESS_APP_AUTH_DOMAIN'),
+    process.env.REACT_APP_AUTH_DOMAIN ||
+    (process.env.REACT_APP_ENV === 'test' &&
+      Cypress.env('CYPRESS_APP_AUTH_DOMAIN')),
   projectId:
-    process.env.REACT_APP_PROJECT_ID || Cypress.env('CYPRESS_APP_PROJECT_ID'),
+    process.env.REACT_APP_PROJECT_ID ||
+    (process.env.REACT_APP_ENV === 'test' &&
+      Cypress.env('CYPRESS_APP_PROJECT_ID')),
   storageBucket:
     process.env.REACT_APP_STORAGE_BUCKET ||
-    Cypress.env('CYPRESS_APP_STORAGE_BUCKET'),
+    (process.env.REACT_APP_ENV === 'test' &&
+      Cypress.env('CYPRESS_APP_STORAGE_BUCKET')),
   messagingSenderId:
     process.env.REACT_APP_MESSAGING_SENDER_ID ||
     Cypress.env('CYPRESS_APP_MESSAGING_SENDER_ID'),
-  appId: process.env.REACT_APP_APP_ID || Cypress.env('CYPRESS_APP_APP_ID')
+  appId:
+    process.env.REACT_APP_APP_ID ||
+    (process.env.REACT_APP_ENV === 'test' && Cypress.env('CYPRESS_APP_APP_ID'))
 }
 
 const app = initializeApp(firebaseConfig)

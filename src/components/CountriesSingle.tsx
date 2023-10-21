@@ -58,7 +58,6 @@ const CountriesSingle = () => {
   // get the current country index in the countries list
   useEffect(() => {
     if (country && countriesList.length > 0) {
-      console.log('set country index')
       setCountryIndex(
         countriesList.findIndex((c) => c.name.common === country.name.common)
       )
@@ -74,10 +73,6 @@ const CountriesSingle = () => {
       })
     }
   }, [country])
-
-  useEffect(() => {
-    console.log(weatherResult.error)
-  }, [weatherResult])
 
   //hooks for navigation with arrow keys
   useKeyDown(() => {
@@ -177,9 +172,8 @@ const CountriesSingle = () => {
               )}
               {country.borders && (
                 <>
-                  <p className="my-0">{`Border${
-                    country.borders.length > 1 ? 's' : ''
-                  }:`}</p>
+                  <p className="my-0">{`Border${country.borders.length > 1 ? 's' : ''
+                    }:`}</p>
                   <ul className="font-extralight grid col-span-2 grid-cols-2 auto-rows-max">
                     {country.borders.map((border) => {
                       const country = countriesList.find(
@@ -224,11 +218,10 @@ const CountriesSingle = () => {
                   <ul className="font-extralight col-span-2">
                     <li>{`Temperature: ${weatherResult.data.main.temp} Celsius`}</li>
                     <li>
-                      {`Wind: ${
-                        weatherResult.data.wind.speed
-                      } mps, direction: ${weatherService.getWindDirection(
-                        weatherResult.data.wind.deg
-                      )}`}
+                      {`Wind: ${weatherResult.data.wind.speed
+                        } mps, direction: ${weatherService.getWindDirection(
+                          weatherResult.data.wind.deg
+                        )}`}
                     </li>
                     <li>
                       Clouds:{' '}

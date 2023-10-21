@@ -42,36 +42,51 @@ export const Form = ({
   onSubmit,
   responseErrors
 }: IForm) => {
-  const { values, handleChange, isFormTouched } = useForm(initialValues)
-  const [errors, setErrors] = useState<InputType & Error>({})
+  const { values, handleChange, isFormTouched, resetForm } = useForm(initialValues)
+  const [validationErrors, setValidationErrors] = useState<InputType>({})
+  const [validationAndResponseErrors, setValidationAndResponseErrors] = useState<InputType & Error>({})
   const [isValid, setIsValid] = useState(false)
 
   useEffect(() => {
-    if (responseErrors) setErrors({ ...errors, responseErrors })
+    if (responseErrors) {
+      setValidationAndResponseErrors({ ...validationErrors, responseErrors })
+      setTimeout(() => {
+        setValidationAndResponseErrors({ ...validationErrors })
+      }, 5000)
+    }
   }, [responseErrors])
 
   useEffect(() => {
-    if (isFormTouched) {
-      setIsValid(Object.keys(errors).length === 0)
+    if (validationErrors && responseErrors) {
+      setValidationAndResponseErrors({ ...validationErrors, responseErrors })
+    } else if (validationErrors) {
+      setValidationAndResponseErrors({ ...validationErrors })
     }
-  }, [errors, isFormTouched])
+  }, [validationErrors])
+
+  useEffect(() => {
+    if (isFormTouched) {
+      setIsValid(Object.keys(validationErrors).length === 0)
+    }
+  }, [validationErrors, isFormTouched])
 
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     onSubmit(values)
+    resetForm()
   }
 
   const validateField = (field: keyof typeof EInputs) => {
     try {
-      if (field in errors) {
-        const newErrors = { ...errors }
+      if (field in validationErrors) {
+        const newErrors = { ...validationErrors }
         delete newErrors[field]
-        setErrors(newErrors)
+        setValidationErrors(newErrors)
       }
       InputSchema.pick({ [field]: true }).parse(values)
     } catch (error) {
       const { issues = [] } = error as ZodError
-      setErrors({ ...errors, [field]: issues[0].message })
+      setValidationErrors({ ...validationErrors, [field]: issues[0].message })
     }
   }
 
@@ -93,15 +108,14 @@ export const Form = ({
             value={values[key]}
             placeholder={key}
             onBlur={() => validateField(key as keyof typeof EInputs)}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              handleChange(e)
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)
             }
           />
         )
       })}
-      {errors && (
+      {validationAndResponseErrors && (
         <ul className="text-sm font-extralight text-error-500">
-          {Object.values(errors).map((error) => {
+          {Object.values(validationAndResponseErrors).map((error) => {
             return <li key={error}>{error}</li>
           })}
         </ul>
