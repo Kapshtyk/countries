@@ -13,6 +13,7 @@ Countries App is a simple web application built with React. It allows users to e
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Code Examples](#code-examples)
+- [Code Quality](#code-quality)
 - [Credits](#credits)
 - [Screenshots](#screenshots)
 - [Author](#author)
@@ -379,7 +380,7 @@ or in the headless mode:
 ```
 npm run test:e2e
 ``````
-## Code quality
+## Code Quality
 Code quality verified by SonarCloud.io
 
 ![sonar](https://github.com/Kapshtyk/countries/blob/master/screenshots/sonar.png)
