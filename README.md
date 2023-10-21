@@ -367,7 +367,7 @@ describe('dark mode', () => {
 
 As a result, I am confident that all my secure routes are working as they should, users cannot access secure pages without authentication, users can login and register using the appropriate forms, users can open any country page in the API as of 20 October 2023, and the dark mode switch is working.
 
-![cypress screenshot](https://github.com/Kapshtyk/countries_typescrirpt/blob/master/screenshots/cypress.jpeg)
+![cypress screenshot](https://github.com/Kapshtyk/countries/blob/master/screenshots/cypress.jpeg)
 
 It has also been possible to verify that form validation is working correctly.
 
@@ -379,6 +379,10 @@ or in the headless mode:
 ```
 npm run test:e2e
 ``````
+## Code quality
+Code quality verified by SonarCloud.io
+
+![sonar](https://github.com/Kapshtyk/countries/blob/master/screenshots/sonar.png)
 
 ## Credits
 
@@ -387,11 +391,11 @@ npm run test:e2e
 
 ## Screenshots
 
-![full-screen-light-countries](https://github.com/Kapshtyk/countries_typescript/blob/master/screenshots/full-screen-light-countries.png)
-![full-screen-light-diagrams](https://github.com/Kapshtyk/countries_typescript/blob/master/screenshots/full-screen-light-diagrams.png)
-![full-screen-dark-country](https://github.com/Kapshtyk/countries_typescript/blob/master/screenshots/full-screen-dark-country.png)
-![mobile-dark-country](https://github.com/Kapshtyk/countries_typescript/blob/master/screenshots/mobile-dark-country.png)
-![full-screen-light-country](https://github.com/Kapshtyk/countries_typescript/blob/master/screenshots/full-screen-light-country.png)
+![full-screen-light-countries](https://github.com/Kapshtyk/countries/blob/master/screenshots/full-screen-light-countries.png)
+![full-screen-dark-country](https://github.com/Kapshtyk/countries/blob/master/screenshots/full-screen-dark-country.png)
+![full-screen-light-country](https://github.com/Kapshtyk/countries/blob/master/screenshots/full-screen-light-country.png)
+![full-screen-light-diagrams](https://github.com/Kapshtyk/countries/blob/master/screenshots/full-screen-light-diagrams.png)
+![mobile-dark-country](https://github.com/Kapshtyk/countries/blob/master/screenshots/mobile-dark-country.png)
 
 ## Author
 
