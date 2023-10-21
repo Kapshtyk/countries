@@ -24,7 +24,7 @@ const Home = () => {
           <ul>
             <li>
               <a
-                className="border my-2 rounded-md p-1 w-44 flex gap-2 justify-between items-center hover:shadow-md transition-all duration-300 ease-in-out"
+                className="border my-2 rounded-md p-1 w-44 flex gap-2 justify-between items-center hover:shadow-md transition-shadow duration-300 ease-in-out"
                 href="https://www.linkedin.com/in/kapshtyk/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -35,7 +35,7 @@ const Home = () => {
             </li>
             <li>
               <a
-                className="border rounded-md my-2 p-1 w-44 flex gap-2 justify-between items-center hover:shadow-md transition-all duration-300 ease-in-out"
+                className="border rounded-md my-2 p-1 w-44 flex gap-2 justify-between items-center hover:shadow-md transition-shadow duration-300 ease-in-out"
                 href="https://github.com/Kapshtyk"
                 target="_blank"
                 rel="noopener noreferrer"

@@ -24,6 +24,7 @@ const CustomNavLink = ({
       to={to}
       className={mobile ? variant.mobile : variant.wide}
       onClick={onClick}
+      data-test={`navlink-${to}`}
     >
       {label}
     </NavLink>

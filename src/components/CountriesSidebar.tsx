@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import { useGetCountriesQuery } from '@/app/services/countries/countries'
 
+import { getRegionColor } from '@/lib/helpers/regionColors'
+
 const CountriesSidebar = () => {
   const location = useLocation()
   const navigate = useNavigate()
@@ -28,7 +30,7 @@ const CountriesSidebar = () => {
   }
 
   return (
-    <div className="hidden absolute md:block w-52 font-light text-sm bg-additional-100 border-r border-additional-200 overflow-y-auto shadow-sm max-h-screen left-0 top-[80px]">
+    <aside className="hidden absolute md:block w-52 font-light text-sm bg-additional-100 border-r border-additional-200 overflow-y-auto shadow-sm max-h-screen left-0 top-[80px]">
       <div className="p-4 text-additional-400 font-extralight text-xs">
         Navigation with arrow keys
       </div>
@@ -38,15 +40,16 @@ const CountriesSidebar = () => {
             <li
               ref={
                 country.name.common ===
-                  decodeURIComponent(location.pathname.split('/')[2])
+                decodeURIComponent(location.pathname.split('/')[2])
                   ? currentCountryRef
                   : null
               }
-              className={`${country.name.common ===
+              className={`${
+                country.name.common ===
                 decodeURIComponent(location.pathname.split('/')[2])
-                ? `bg-main-400 transition-all duration-300 ease-in-out shadow-sm text-background`
-                : ''
-                } p-2 m-2 rounded-md hover:cursor-pointer hover:text-background hover:bg-main-200`}
+                  ? 'bg-main-300 transition-all duration-300 ease-in-out shadow-sm text-background'
+                  : ''
+              } p-2 m-2 rounded-md hover:cursor-pointer hover:text-background hover:bg-main-200`}
               key={country.name.common}
               onClick={() => navigate(`/countries/${country.name.common}`)}
             >
@@ -55,7 +58,7 @@ const CountriesSidebar = () => {
           )
         })}
       </ul>
-    </div>
+    </aside>
   )
 }
 

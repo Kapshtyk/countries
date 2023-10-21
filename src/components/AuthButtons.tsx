@@ -22,6 +22,8 @@ const AuthButtons = ({ onClick = () => {} }: IAuthButtons) => {
           <Button
             type="button"
             variant="default"
+            data-test="register-button"
+            aria-description="navigate to register page"
             onClick={() => {
               navigate('/register')
               onClick()
@@ -33,6 +35,8 @@ const AuthButtons = ({ onClick = () => {} }: IAuthButtons) => {
           <Button
             type="button"
             variant="default"
+            data-test="login-button"
+            aria-description="navigate to login page"
             onClick={() => {
               navigate('/login')
               onClick()
@@ -42,7 +46,13 @@ const AuthButtons = ({ onClick = () => {} }: IAuthButtons) => {
           </Button>
         ))}
       {!loading && user && (
-        <Button type="button" variant="outline" onClick={logout}>
+        <Button
+          data-test="logout-button"
+          aria-description="logout from the app"
+          type="button"
+          variant="outline"
+          onClick={logout}
+        >
           Logout
         </Button>
       )}

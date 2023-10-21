@@ -48,6 +48,7 @@ const Favourite = ({ country, top, right }: IFavourite) => {
 
   return (
     <Button
+      data-test="favourite-button"
       variant="blank"
       size="mini"
       className={`absolute top-${top} right-${right} hover:text-main-500 active:animate-pingOnce z-30 transition-all duration-300 ease-in-out`}

@@ -12,6 +12,7 @@ import {
 
 import { useGetCountriesQuery } from '@/app/services/countries/countries'
 
+import { getRegionColor } from '@/lib/helpers/regionColors'
 import { getTotalValuesForRegion } from '@/lib/helpers/statistics'
 import { Country } from '@/lib/zod/countries'
 
@@ -61,10 +62,20 @@ const BarChartView = ({ country }: IBarChartView) => {
               return formatValue(value)
             }
           }}
+          itemStyle={{
+            color: 'gray'
+          }}
+          labelStyle={{
+            color: 'gray'
+          }}
         />
         <Legend />
-        <Bar dataKey={country.name.common} stackId="a" fill="#6dc5ff" />
-        <Bar dataKey={country.region} stackId="a" fill="#5E8CC8" />
+        <Bar dataKey={country.name.common} stackId="a" fill="#4C778899" />
+        <Bar
+          dataKey={country.region}
+          stackId="a"
+          fill={getRegionColor(country.region)}
+        />
       </BarChart>
     </ResponsiveContainer>
   )

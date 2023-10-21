@@ -20,6 +20,8 @@ import { setFavourites } from '@/features/favourites/favouritesSlice'
 
 import { useAppDispatch } from '@/hooks/redux'
 
+import PageNotFound from './pages/PageNotFound'
+
 function App() {
   const [user] = useAuthState(auth)
   const dispatch = useAppDispatch()
@@ -46,12 +48,13 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/diagrams" element={<Diagrams />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/favourites" element={<Favourites />} />
             <Route path="/countries" element={<Countries />} />
             <Route path="/countries/:single" element={<CountriesSingle />} />
+            <Route path="/diagrams" element={<Diagrams />} />
           </Route>
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -45,6 +45,8 @@ const Diagrams = () => {
               <div className="flex w-6 justify-end items-center px-2">
                 <Checkbox
                   className="flex justify-center items-center"
+                  data-test="diagram-checkbox"
+                  aria-label={`toggle ${region} region}`}
                   id={region}
                   checked={selectedRegions.includes(region)}
                   name={region}

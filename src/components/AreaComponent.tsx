@@ -48,7 +48,7 @@ const AreaComponent = ({ regions }: IAreaComnonents) => {
     `${Math.round(value).toLocaleString()} mln`
 
   return (
-    <>
+    <div className="container" data-test="area-component">
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart
           width={500}
@@ -116,7 +116,7 @@ const AreaComponent = ({ regions }: IAreaComnonents) => {
           />
         </AreaChart>
       </ResponsiveContainer>
-    </>
+    </div>
   )
 }
 

@@ -19,10 +19,14 @@ const DarkModeToggle = () => {
   }
 
   return (
-    <div className="flex items-center gap-2 justify-between font-light text-foreground/50">
+    <div
+      data-test="dark-mode-toggle"
+      className="flex items-center gap-2 justify-between font-light text-foreground/50"
+    >
       <span>light</span>
       <Switch
         checked={theme === 'dark'}
+        aria-description="toggle dark mode"
         onCheckedChange={() => handleThemeChange()}
       />
       <span>dark</span>

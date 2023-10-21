@@ -60,7 +60,11 @@ const Favourites = () => {
         </p>
       )}
       {countiesToShow.length > 0 && (
-        <Button variant="default" onClick={handleDelete}>
+        <Button
+          data-test="clear-favourites-button"
+          variant="default"
+          onClick={handleDelete}
+        >
           Clear favourites
         </Button>
       )}

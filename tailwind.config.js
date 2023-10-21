@@ -46,7 +46,7 @@ module.exports = {
           400: 'rgb(var(--additional-color-400) / <alpha-value>)'
         },
         error: {
-          500: 'rgb(var(--error-color-500)'
+          500: 'rgb(var(--error-color-500) / <alpha-value>)'
         }
       }
     }

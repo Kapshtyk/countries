@@ -39,7 +39,7 @@ const ScatterComponent = ({ regions }: IScatterComnonents) => {
   }, [])
 
   return (
-    <div className="container">
+    <div className="container" data-test="scatter-component">
       <ResponsiveContainer width="100%" height={300}>
         <ScatterChart
           margin={{

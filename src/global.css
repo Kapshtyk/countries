@@ -23,7 +23,7 @@
     --main-color-300: 212 212 216;
     --main-color-400: 161 161 170;
     --main-color-500: 113 113 122;
-    --background: 72 72 72;
+    --background: 32 32 32;
     --foreground: 235 235 235;
     --additional-color-100: 95 95 95;
     --additional-color-200: 145 145 145;
@@ -47,12 +47,8 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased overscroll-none;
   }
-}
-
-#root {
-  @apply h-screen bg-gradient-to-b from-main-200/30 from-0% via-main-100/30 via-20% to-background to-50%;
 }
 
 .active::after {

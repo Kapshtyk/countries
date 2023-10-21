@@ -130,39 +130,43 @@ const CountriesSingle = () => {
             </header>
             <h2>Basic information about the country</h2>
             <section className="grid gap-2 grid-cols-3 auto-rows-max">
-              <p className="w-[150px]">Region:</p>
+              <p className="w-[150px] my-0">Region:</p>
               <span className="font-extralight col-span-2">
                 {country.region}
               </span>
-              <p>Population:</p>
+              <p className="my-0">Population:</p>
               <span className="font-extralight col-span-2">
                 {country.population.toLocaleString()}
               </span>
-              <p>Area:</p>
+              <p className="my-0">Area:</p>
               <span className="font-extralight col-span-2">
                 {country.area.toLocaleString()} km<sup>2</sup>
               </span>
               {country.languages && (
                 <>
-                  <p>
+                  <p className="my-0">
                     Language
                     {Object.values(country.languages).length > 1 ? 's' : ''}:
                   </p>
                   <ul className="font-extralight col-span-2">
                     {Object.values(country.languages ?? {}).map((language) => {
-                      return <li key={language}>{language}</li>
+                      return (
+                        <li className="" key={language}>
+                          {language}
+                        </li>
+                      )
                     })}
                   </ul>
                 </>
               )}
               {country.currencies && (
                 <>
-                  <p>
+                  <p className="my-0">
                     Currens
                     {Object.values(country.currencies).length > 1 ? 'ies' : 'y'}
                     :
                   </p>
-                  <ul className="font-extralight col-span-2">
+                  <ul className="font-extralight self-center  col-span-2">
                     {Object.keys(country.currencies).map((key) => {
                       if (country.currencies) {
                         return <li key={key}>{country.currencies[key].name}</li>
@@ -173,7 +177,9 @@ const CountriesSingle = () => {
               )}
               {country.borders && (
                 <>
-                  <p>{`Border${country.borders.length > 1 ? 's' : ''}:`}</p>
+                  <p className="my-0">{`Border${
+                    country.borders.length > 1 ? 's' : ''
+                  }:`}</p>
                   <ul className="font-extralight grid col-span-2 grid-cols-2 auto-rows-max">
                     {country.borders.map((border) => {
                       const country = countriesList.find(
@@ -200,7 +206,7 @@ const CountriesSingle = () => {
               )}
               {country.capital && (
                 <>
-                  <p>Capital:</p>
+                  <p className="my-0">Capital:</p>
                   <span className="font-extralight col-span-2">
                     {country.capital}
                   </span>
@@ -214,7 +220,7 @@ const CountriesSingle = () => {
               )}
               {weatherResult.data && (
                 <>
-                  <p>Weather in {country.capital}:</p>
+                  <p className="my-0">Weather in {country.capital}:</p>
                   <ul className="font-extralight col-span-2">
                     <li>{`Temperature: ${weatherResult.data.main.temp} Celsius`}</li>
                     <li>
