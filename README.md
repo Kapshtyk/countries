@@ -13,6 +13,9 @@ Countries App is a simple web application built with React. It allows users to e
 - [Getting Started](https://github.com/Kapshtyk/countries_typescrirpt/edit/master/README.md#getting-started)
 - [Usage](https://github.com/Kapshtyk/countries_typescrirpt/edit/master/README.md#usage)
 - [Code Examples](https://github.com/Kapshtyk/countries_typescrirpt/edit/master/README.md#code-examples)
+- [Credits](#credits)
+- [Screenshots](#screenshots)
+- [Author](#author)
 - [Contributing](https://github.com/Kapshtyk/countries_typescrirpt/edit/master/README.md#contributing)
 - [License](https://github.com/Kapshtyk/countries_typescrirpt/edit/master/README.md#license)
 
@@ -33,7 +36,7 @@ Countries App is a simple web application built with React. It allows users to e
 
 - [TypeScript](https://www.typescriptlang.org).
 - External APIs: Google's [Firebase, Firestore](https://firebase.google.com) and [Maps](https://mapsplatform.google.com), [OpenWeatherMap API](https://openweathermap.org), [REST Countries API]().
-- React, React Router.
+- [React](https://react.dev), [React Router](https://reactrouter.com/en/main).
 - [Recharts](https://recharts.org/en-US/) - for creating responsive dynamic charts.
 - [Redux Toolkit](https://redux-toolkit.js.org), Redux-persist - for managing the state of the application.
 - [RTK Query](https://redux-toolkit.js.org/rtk-query/overview) - for fetching the data, transforming the result and caching it.
@@ -66,7 +69,7 @@ cd countries_typescript
 ```
 npm install
 ```
-### Usage
+## Usage
 
 - To start the development server, run:
 ```
