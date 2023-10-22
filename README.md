@@ -387,8 +387,9 @@ Code quality verified by SonarCloud.io
 
 ## Credits
 
-- Thanks to the developers of the technologies used to create this project for their valuable contributions to the web development community.
 - Special thanks to [Martin Holland](https://github.com/martin-holland) for coming up with the idea for this project and teaching us how to do it.
+- Thanks to the developers of the technologies used to create this project for their valuable contributions to the web development community.
+- Thanks to the [Unsplash](https://unsplash.com) for providing us with this random photo API.
 
 ## Screenshots
 
