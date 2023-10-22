@@ -62,6 +62,7 @@ const Home = () => {
         </p>
         <h3>Technologies and services</h3>
         <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 auto-rows-max font-light">
+          <li>Cypress</li>
           <li>Firebase</li>
           <li>Google Maps</li>
           <li>OpenWeatherMap API</li>
